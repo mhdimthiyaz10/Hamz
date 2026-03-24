@@ -310,8 +310,6 @@ export default function App() {
                         </nav>
 
                         <HeroSection />
-                        <TrustedSection />
-                        <ContactSection />
                     </main>
                 } />
                 <Route path="/hamz-trading" element={<HamzTrading />} />

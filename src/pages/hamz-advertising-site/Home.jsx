@@ -164,10 +164,13 @@ export default function Home() {
         </svg>
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="mb-24 text-center">
-             <h3 className="text-3xl font-light text-[#F5F5F5] tracking-wide mb-6">
+             <h3 
+               className="text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-[#FFFFFF] via-[#E4E4E4] to-[#999999] tracking-wider mb-6 drop-shadow-md"
+               style={{ fontFamily: "'Playfair Display', 'Bodoni MT', 'Didot', 'Georgia', serif", fontWeight: 400, fontStyle: 'italic' }}
+             >
                 Our Core Expertise
              </h3>
-             <h4 className="text-base font-light text-[#B0B0B0] leading-relaxed max-w-3xl mx-auto">
+             <h4 className="text-base md:text-lg font-light text-[#B0B0B0] leading-relaxed max-w-3xl mx-auto tracking-wide">
                  HAMZ ADVERTISING delivers great presentations and executes high-fidelity board works. Completed using sophisticated precision machinery and contemporary minimalist aesthetics.
              </h4>
           </div>
@@ -212,30 +215,66 @@ export default function Home() {
                 </div>
              </div>
 
-             {/* Service 2 */}
-             <div className="bg-[#1A1A1A] border border-[#2F2F2F] rounded-xl p-10 hover:border-[#8A8A8A] transition-colors duration-500 group">
-                <div className="w-14 h-14 rounded-full bg-[#242424] flex items-center justify-center mb-8 group-hover:bg-[#F5F5F5] transition-colors duration-500">
-                   <Layers size={24} className="text-[#B0B0B0] group-hover:text-[#0A0A0A] transition-colors duration-500" strokeWidth={1.5} />
+             {/* Service 2 - Timeline Layout */}
+             <div className="bg-[#1A1A1A] border border-[#2F2F2F] rounded-xl pl-6 py-8 pr-10 hover:border-[#8A8A8A] transition-colors duration-500 group flex">
+                {/* Timeline Column */}
+                <div className="flex flex-col items-center mr-8 shrink-0 relative z-10 w-16">
+                   {/* Outer Circle & Icon */}
+                   <div className="w-16 h-16 rounded-full border-[2.5px] border-[#8A8A8A]/40 flex items-center justify-center bg-[#1A1A1A] group-hover:border-[#F5F5F5] transition-colors duration-500 mb-2">
+                     <ImageIcon size={22} className="text-[#B0B0B0] group-hover:text-[#F5F5F5] transition-colors duration-500" strokeWidth={2} />
+                   </div>
+                   {/* Vertical Line */}
+                   <div className="w-[1px] flex-grow bg-[#2F2F2F] group-hover:bg-[#444] transition-colors duration-500"></div>
                 </div>
-                <h4 className="text-xl font-medium text-[#F5F5F5] mb-4 tracking-wide">Structural Flex</h4>
-                <p className="text-[#B0B0B0] text-sm leading-relaxed font-light mb-8">Enhance your corporate identity visually through flawless prints and expansive flex executions.</p>
-                <ul className="text-[#8A8A8A] text-sm font-light space-y-3">
-                   <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-[#F5F5F5]"></div> High-Fidelity Prints</li>
-                   <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-[#F5F5F5]"></div> Exterior Placements</li>
-                </ul>
+
+                {/* Text Content Column */}
+                <div className="flex-1 flex flex-col pt-3">
+                   <h4 className="text-xl font-medium text-[#F5F5F5] mb-4 tracking-wide">Flex Works</h4>
+                   <p className="text-[#B0B0B0] text-[15px] leading-relaxed font-light mb-8">
+                      Every entrepreneur should be needed to highlight their business brand. So we offer quality affinity and print output.
+                   </p>
+                   <ul className="text-[#8A8A8A] text-[15px] font-light space-y-4 relative">
+                      <li className="flex items-center relative">
+                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Works Sticker
+                      </li>
+                      <li className="flex items-center relative">
+                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Printing Works
+                      </li>
+                   </ul>
+                </div>
              </div>
 
-             {/* Service 3 */}
-             <div className="bg-[#1A1A1A] border border-[#2F2F2F] rounded-xl p-10 hover:border-[#8A8A8A] transition-colors duration-500 group">
-                <div className="w-14 h-14 rounded-full bg-[#242424] flex items-center justify-center mb-8 group-hover:bg-[#F5F5F5] transition-colors duration-500">
-                   <Box size={24} className="text-[#B0B0B0] group-hover:text-[#0A0A0A] transition-colors duration-500" strokeWidth={1.5} />
+             {/* Service 3 - Timeline Layout */}
+             <div className="bg-[#1A1A1A] border border-[#2F2F2F] rounded-xl pl-6 py-8 pr-10 hover:border-[#8A8A8A] transition-colors duration-500 group flex">
+                {/* Timeline Column */}
+                <div className="flex flex-col items-center mr-8 shrink-0 relative z-10 w-16">
+                   {/* Outer Circle & Icon */}
+                   <div className="w-16 h-16 rounded-full border-[2.5px] border-[#8A8A8A]/40 flex items-center justify-center bg-[#1A1A1A] group-hover:border-[#F5F5F5] transition-colors duration-500 mb-2">
+                     <Box size={22} className="text-[#B0B0B0] group-hover:text-[#F5F5F5] transition-colors duration-500" strokeWidth={2} />
+                   </div>
+                   {/* Vertical Line */}
+                   <div className="w-[1px] flex-grow bg-[#2F2F2F] group-hover:bg-[#444] transition-colors duration-500"></div>
                 </div>
-                <h4 className="text-xl font-medium text-[#F5F5F5] mb-4 tracking-wide">Acrylic Structures</h4>
-                <p className="text-[#B0B0B0] text-sm leading-relaxed font-light mb-8">Refined directional and informational guides carved through superior acrylic methodology.</p>
-                <ul className="text-[#8A8A8A] text-sm font-light space-y-3">
-                   <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-[#F5F5F5]"></div> Cast Acrylic Boards</li>
-                   <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-[#F5F5F5]"></div> Dimensional Guidance</li>
-                </ul>
+
+                {/* Text Content Column */}
+                <div className="flex-1 flex flex-col pt-3">
+                   <h4 className="text-xl font-medium text-[#F5F5F5] mb-4 tracking-wide">Acrylic and Plastic Work</h4>
+                   <p className="text-[#B0B0B0] text-[15px] leading-relaxed font-light mb-8">
+                      Acrylic is a type of board sign that signifies to give information about the way in which you can search. In other words, a path sign is to choose where you can go.
+                   </p>
+                   <ul className="text-[#8A8A8A] text-[15px] font-light space-y-4 relative">
+                      <li className="flex items-center relative">
+                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Acrylic Paintings
+                      </li>
+                      <li className="flex items-center relative">
+                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Plastic Works Board
+                      </li>
+                   </ul>
+                </div>
              </div>
           </div>
         </div>
