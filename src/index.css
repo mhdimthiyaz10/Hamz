@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-white overflow-x-hidden;
+    background-color: #020806;
+    color: white;
+  }
+
+  :root {
+    --background: 168 62% 6%;
+    --foreground: 0 0% 100%;
+    --card: 171 62% 14%;
+    --card-foreground: 0 0% 100%;
+    --popover: 171 62% 14%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 168 62% 6%;
+    --secondary: 168 66% 22%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 171 62% 14%;
+    --muted-foreground: 156 20% 75%;
+    --accent: 156 73% 67%;
+    --accent-foreground: 168 62% 6%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 168 66% 22%;
+    --input: 168 66% 22%;
+    --ring: 156 73% 67%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 168 62% 6%;
+    --foreground: 0 0% 100%;
+    --card: 171 62% 14%;
+    --card-foreground: 0 0% 100%;
+    --popover: 171 62% 14%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 168 62% 6%;
+    --secondary: 168 66% 22%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 171 62% 14%;
+    --muted-foreground: 156 20% 75%;
+    --accent: 156 73% 67%;
+    --accent-foreground: 168 62% 6%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 168 66% 22%;
+    --input: 168 66% 22%;
+    --ring: 156 73% 67%;
+    --chart-1: 156 70% 50%;
+    --chart-2: 168 60% 45%;
+    --chart-3: 171 80% 55%;
+    --chart-4: 150 65% 60%;
+    --chart-5: 160 75% 55%;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    box-shadow:
+      0 15px 35px 0 rgba(16, 185, 129, 0.20),
+      inset 0 0 25px rgba(255, 255, 255, 0.05);
+  }
+
+  .neon-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-[#6EE7B7];
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.4), 0 0 40px rgba(110, 231, 183, 0.2);
+  }
+
+  .neon-border {
+    @apply border border-accent/50;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #020a08;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #0E3B34;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #135C4E;
+  }
+
+  /* No-scrollbar helper */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* ── Neon service card ───────────────────────────────────────── */
+  .neon-card {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    /* Soft idle glow */
+    box-shadow:
+      0 0 0 1px rgba(74, 222, 128, 0.25),
+      0 0 12px 2px rgba(110, 231, 183, 0.15),
+      0 0 0px 0px rgba(19, 92, 78, 0);
+    transition:
+      box-shadow 0.45s ease,
+      border-color 0.45s ease,
+      transform 0.45s ease;
+  }
+
+  .neon-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg,
+        rgba(74, 222, 128, 0.5),
+        rgba(19, 92, 78, 0.3),
+        rgba(110, 231, 183, 0.4),
+        rgba(74, 222, 128, 0.1));
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: neon-border-pulse 4s ease-in-out infinite alternate;
+  }
+
+  .neon-card:hover {
+    box-shadow:
+      0 0 0 1px rgba(110, 231, 183, 0.6),
+      0 0 18px 4px rgba(74, 222, 128, 0.45),
+      0 0 40px 8px rgba(19, 92, 78, 0.25),
+      0 20px 50px -15px rgba(6, 26, 22, 0.5);
+    transform: translateY(-14px);
+  }
+
+  .neon-card:hover::before {
+    background: linear-gradient(135deg,
+        rgba(110, 231, 183, 0.9),
+        rgba(74, 222, 128, 0.7),
+        rgba(19, 92, 78, 0.8),
+        rgba(4, 15, 12, 0.6));
+    animation: neon-border-spin 2s linear infinite;
+  }
+
+  @keyframes neon-border-pulse {
+    0% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1.0;
+    }
+  }
+
+  @keyframes neon-border-spin {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @property --flow-angle-hamz {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .hamz-flowing-glow {
+    position: relative;
+    z-index: 1;
+    border-radius: 4px;
+    /* Default border radius to ensure clipping */
+  }
+
+  .hamz-flowing-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--flow-angle-hamz), transparent 40%, rgba(255, 117, 73, 0.8), rgba(255, 117, 73, 1), transparent 80%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 2px;
+    animation: flow-border-spin-hamz 4s linear infinite;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .hamz-flowing-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--flow-angle-hamz), transparent 40%, rgba(255, 117, 73, 0.5), rgba(255, 117, 73, 1), transparent 80%);
+    filter: blur(12px);
+    animation: flow-border-spin-hamz 4s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .hamz-flowing-glow:hover::before,
+  .hamz-flowing-glow:hover::after {
+    animation-duration: 1.2s;
+  }
+
+  @keyframes flow-border-spin-hamz {
+    0% {
+      --flow-angle-hamz: 0deg;
+    }
+
+    100% {
+      --flow-angle-hamz: 360deg;
+    }
+  }
+}
+
+
+
+/* Base animations for components */
+.hover-tilt {
+  transition: transform 0.3s ease-out;
+}
+
+.hover-tilt:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale3d(1.02, 1.02, 1.02);
+}
+
+/* ── Scroll Reveal Animations ───────────────────────────────────────────── */
+
+/* Base state: hidden before intersecting */
+.scroll-reveal {
+  opacity: 0;
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Revealed state: fully visible */
+.scroll-reveal.scroll-revealed {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}
+
+/* Fade up variant */
+.scroll-reveal.sr-fade-up {
+  transform: translateY(36px);
+}
+
+/* Slide in from left */
+.scroll-reveal.sr-slide-left {
+  transform: translateX(-60px);
+}
+
+/* Slide in from right */
+.scroll-reveal.sr-slide-right {
+  transform: translateX(60px);
+}

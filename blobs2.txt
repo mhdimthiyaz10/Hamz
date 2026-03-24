@@ -1,0 +1,12 @@
+Image dimensions: 1171x896
+Found shapes:
+{ minX: 207, maxX: 1003, minY: 20, maxY: 810, numPixels: 479499 }
+{ minX: 1091, maxX: 1138, minY: 816, maxY: 863, numPixels: 872 }
+{ minX: 148, maxX: 161, minY: 0, maxY: 8, numPixels: 60 }
+{ minX: 338, maxX: 339, minY: 427, maxY: 434, numPixels: 13 }
+{ minX: 237, maxX: 238, minY: 377, maxY: 385, numPixels: 11 }
+{ minX: 128, maxX: 129, minY: 6, maxY: 11, numPixels: 10 }
+{ minX: 131, maxX: 133, minY: 6, maxY: 9, numPixels: 9 }
+{ minX: 207, maxX: 207, minY: 440, maxY: 448, numPixels: 9 }
+{ minX: 995, maxX: 995, minY: 491, maxY: 499, numPixels: 9 }
+{ minX: 826, maxX: 828, minY: 630, maxY: 637, numPixels: 9 }

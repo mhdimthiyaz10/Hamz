@@ -1,0 +1,297 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Settings, Layers, Box, Eye, Home as HomeIcon, Printer, ImageIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const slides = [
+  "https://images.unsplash.com/photo-1541888086082-cd2bd3e43f01?auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1558402529-d2638a7023e9?auto=format&fit=crop&q=80"
+];
+
+const projects = [
+  { img: "https://www.alghassab.com.sa/wp-content/uploads/2016/11/s1.jpg", title: "Al Majed For Oud", cat: "Miscellaneous" },
+  { img: "https://www.alghassab.com.sa/wp-content/uploads/2016/11/2s2-3.jpg", title: "Orange", cat: "eCommerce" },
+  { img: "https://www.alghassab.com.sa/wp-content/uploads/2016/11/new/0121.jpg", title: "Al Hussain Toys", cat: "Illustration" },
+  { img: "https://www.alghassab.com.sa/wp-content/uploads/2016/11/s5.jpg", title: "Kadina", cat: "Illustration" },
+  { img: "https://www.alghassab.com.sa/wp-content/uploads/2016/11/s6.jpg", title: "Pharmacy", cat: "WEB" },
+  { img: "https://www.alghassab.com.sa/wp-content/uploads/2016/11/s7.jpg", title: "Al Ajmi Car Rental", cat: "WEB" },
+];
+
+export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="w-full">
+      {/* Hero Slider */}
+      <div className="relative w-full h-[75vh] md:h-[85vh] overflow-hidden bg-[#0A0A0A] group">
+        <AnimatePresence initial={false}>
+          <motion.img
+            key={currentSlide}
+            src={slides[currentSlide]}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay"
+          />
+        </AnimatePresence>
+        
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/50"></div>
+        
+
+
+        {/* Slider Controls */}
+        <button 
+          onClick={() => setCurrentSlide(prev => (prev === 0 ? slides.length - 1 : prev - 1))}
+          className="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-[#1A1A1A]/40 backdrop-blur-md border border-[#2F2F2F] text-[#F5F5F5] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 hover:bg-[#242424] hover:border-[#8A8A8A]"
+        >
+          <ChevronLeft size={24} strokeWidth={1} />
+        </button>
+        <button 
+          onClick={() => setCurrentSlide(prev => (prev + 1) % slides.length)}
+          className="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-[#1A1A1A]/40 backdrop-blur-md border border-[#2F2F2F] text-[#F5F5F5] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 hover:bg-[#242424] hover:border-[#8A8A8A]"
+        >
+          <ChevronRight size={24} strokeWidth={1} />
+        </button>
+      </div>
+
+      {/* Services Summary Section */}
+      <section className="py-24 md:py-32 px-6 max-w-6xl mx-auto">
+        <div className="text-center mb-24">
+          <h3 
+            className="text-xl md:text-2xl leading-[2] font-light text-[#F5F5F5] tracking-wider max-w-5xl mx-auto" 
+            style={{ fontFamily: "'Playfair Display', 'Georgia', serif" }}
+          >
+            Specializing in the manufacture, design and installation of advertising and advertising boards<br/>
+            for government departments and commercial<br/>
+            companies Hidden or front-facing LED Stereoscopic Steel Lettering Boards + Acrylic Face<br/>
+            Hidden or Front Lighting<br/>
+            LED Painted Zancore Letter Boards + Acrylic Face Lighting
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-lg md:text-xl font-light text-[#B0B0B0] leading-loose">
+          <ul className="space-y-6">
+            <li className="flex items-start gap-4"><div className="w-2 h-2 rounded-full bg-[#8A8A8A] mt-3.5 opacity-60 flex-shrink-0"></div>Design & installation of cladding & wooden facades</li>
+            <li className="flex items-start gap-4"><div className="w-2 h-2 rounded-full bg-[#8A8A8A] mt-3.5 opacity-60 flex-shrink-0"></div>Premium styling and corporate installations</li>
+          </ul>
+          <ul className="space-y-6">
+            <li className="flex items-start gap-4"><div className="w-2 h-2 rounded-full bg-[#8A8A8A] mt-3.5 opacity-60 flex-shrink-0"></div>Advanced Neon and tailored Acrylic signs</li>
+            <li className="flex items-start gap-4"><div className="w-2 h-2 rounded-full bg-[#8A8A8A] mt-3.5 opacity-60 flex-shrink-0"></div>Minimalist iron stand structures for projects</li>
+          </ul>
+          <ul className="space-y-6">
+            <li className="flex items-start gap-4"><div className="w-2 h-2 rounded-full bg-[#8A8A8A] mt-3.5 opacity-60 flex-shrink-0"></div>Zincore and precise steel signs with subtle LED lighting</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Services Detail Section */}
+      <section className="py-24 md:py-32 px-6 bg-[#0A0A0A] border-t border-b border-[#1A1A1A]">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-24 text-center">
+             <h3 className="text-3xl font-light text-[#F5F5F5] tracking-wide mb-6">
+                Our Core Expertise
+             </h3>
+             <h4 className="text-base font-light text-[#B0B0B0] leading-relaxed max-w-3xl mx-auto">
+                 HAMZ ADVERTISING delivers great presentations and executes high-fidelity board works. Completed using sophisticated precision machinery and contemporary minimalist aesthetics.
+             </h4>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+             {/* Service 1 - Timeline Layout */}
+             <div className="bg-[#1A1A1A] border border-[#2F2F2F] rounded-xl pl-6 py-8 pr-10 hover:border-[#8A8A8A] transition-colors duration-500 group flex">
+                {/* Timeline Column */}
+                <div className="flex flex-col items-center mr-8 shrink-0 relative z-10 w-16">
+                   {/* Outer Circle & Icon */}
+                   <div className="w-16 h-16 rounded-full border-[2.5px] border-[#8A8A8A]/40 flex items-center justify-center bg-[#1A1A1A] group-hover:border-[#F5F5F5] transition-colors duration-500 mb-2">
+                     <Eye size={22} className="text-[#B0B0B0] group-hover:text-[#F5F5F5] transition-colors duration-500" strokeWidth={2} />
+                   </div>
+                   {/* Vertical Line */}
+                   <div className="w-[1px] flex-grow bg-[#2F2F2F] group-hover:bg-[#444] transition-colors duration-500"></div>
+                </div>
+
+                {/* Text Content Column */}
+                <div className="flex-1 flex flex-col pt-3">
+                   <h4 className="text-xl font-medium text-[#F5F5F5] mb-4 tracking-wide">Signboards</h4>
+                   <p className="text-[#B0B0B0] text-[15px] leading-relaxed font-light mb-8">
+                      Advertising is one of the most usable identity of the business. We use only high quality of the work of this forum.
+                   </p>
+                   <ul className="text-[#8A8A8A] text-[15px] font-light space-y-4 relative">
+                      <li className="flex items-center relative">
+                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Neon Works
+                      </li>
+                      <li className="flex items-center relative">
+                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Zincore Works
+                      </li>
+                      <li className="flex items-center relative">
+                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Works Led
+                      </li>
+                      <li className="flex items-center relative">
+                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Stainless Steel
+                      </li>
+                   </ul>
+                </div>
+             </div>
+
+             {/* Service 2 */}
+             <div className="bg-[#1A1A1A] border border-[#2F2F2F] rounded-xl p-10 hover:border-[#8A8A8A] transition-colors duration-500 group">
+                <div className="w-14 h-14 rounded-full bg-[#242424] flex items-center justify-center mb-8 group-hover:bg-[#F5F5F5] transition-colors duration-500">
+                   <Layers size={24} className="text-[#B0B0B0] group-hover:text-[#0A0A0A] transition-colors duration-500" strokeWidth={1.5} />
+                </div>
+                <h4 className="text-xl font-medium text-[#F5F5F5] mb-4 tracking-wide">Structural Flex</h4>
+                <p className="text-[#B0B0B0] text-sm leading-relaxed font-light mb-8">Enhance your corporate identity visually through flawless prints and expansive flex executions.</p>
+                <ul className="text-[#8A8A8A] text-sm font-light space-y-3">
+                   <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-[#F5F5F5]"></div> High-Fidelity Prints</li>
+                   <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-[#F5F5F5]"></div> Exterior Placements</li>
+                </ul>
+             </div>
+
+             {/* Service 3 */}
+             <div className="bg-[#1A1A1A] border border-[#2F2F2F] rounded-xl p-10 hover:border-[#8A8A8A] transition-colors duration-500 group">
+                <div className="w-14 h-14 rounded-full bg-[#242424] flex items-center justify-center mb-8 group-hover:bg-[#F5F5F5] transition-colors duration-500">
+                   <Box size={24} className="text-[#B0B0B0] group-hover:text-[#0A0A0A] transition-colors duration-500" strokeWidth={1.5} />
+                </div>
+                <h4 className="text-xl font-medium text-[#F5F5F5] mb-4 tracking-wide">Acrylic Structures</h4>
+                <p className="text-[#B0B0B0] text-sm leading-relaxed font-light mb-8">Refined directional and informational guides carved through superior acrylic methodology.</p>
+                <ul className="text-[#8A8A8A] text-sm font-light space-y-3">
+                   <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-[#F5F5F5]"></div> Cast Acrylic Boards</li>
+                   <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-[#F5F5F5]"></div> Dimensional Guidance</li>
+                </ul>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Gallery - Infinite Marquee */}
+      <section className="py-24 md:py-32">
+        <style>{`
+          @keyframes marquee-rtl {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee-rtl 28s linear infinite;
+          }
+          .marquee-track:hover {
+            animation-play-state: running;
+          }
+        `}</style>
+
+        <div className="max-w-[1400px] mx-auto px-6">
+           <div className="flex justify-between items-end mb-16 px-4">
+              <div>
+                 <p className="text-[#8A8A8A] text-sm tracking-widest uppercase mb-2">Portfolio</p>
+                 <h3 className="text-3xl font-light text-[#F5F5F5] tracking-wide">Recent Executions</h3>
+              </div>
+              <Link to="/hamz-advertising/projects" className="text-sm text-[#F5F5F5] tracking-widest uppercase pb-1 border-b border-[#2F2F2F] hover:border-[#F5F5F5] transition-colors duration-300">
+                 Explore All
+              </Link>
+           </div>
+        </div>
+
+        {/* Scrolling Strip */}
+        <div className="overflow-hidden w-full">
+          <div className="marquee-track">
+            {/* Render twice for seamless loop */}
+            {[...projects, ...projects].map((proj, i) => (
+              <div
+                key={i}
+                className="relative flex-shrink-0 w-[340px] h-[320px] mx-3 group overflow-hidden bg-[#1A1A1A] rounded-xl border border-[#2F2F2F]"
+              >
+                <img
+                  src={proj.img}
+                  alt={proj.title}
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-30 transition-all duration-700 transform group-hover:scale-105"
+                />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <span className="text-[#8A8A8A] text-[10px] uppercase tracking-[0.2em] mb-2">{proj.cat}</span>
+                  <h4 className="text-[#F5F5F5] text-lg font-light tracking-wide">{proj.title}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Steps - Work Process In 3 Steps (Refined to match image) */}
+      <section className="w-full">
+        <div className="grid grid-cols-1 md:grid-cols-4">
+
+          {/* Panel 1 — Intro (Specific Teal) */}
+          <div className="bg-[#2DA0BB] flex flex-col justify-center px-12 py-16 text-left">
+            <h3 className="text-xl font-normal text-white leading-tight">
+              Our Work Process
+            </h3>
+            <h3 className="text-3xl font-black text-white leading-tight mb-6">
+              In 3 Steps
+            </h3>
+            <p className="text-white/90 text-[15px] font-light leading-relaxed">
+              Usage ads give you high-quality outputs. Our work process depends on different stages. Planning and strategy, design and development, then testing and delivering the product to the customer.
+            </p>
+          </div>
+
+          {/* Panel 2 — Planning & Strategy */}
+          <div className="bg-[#333333] flex flex-col items-center justify-center px-8 py-16 text-center border-l border-white/5 group hover:bg-[#3d3d3d] transition-all duration-500">
+            <div className="mb-8 text-white group-hover:scale-110 transition-transform duration-500">
+              <HomeIcon size={56} strokeWidth={1} />
+            </div>
+            <h4 className="text-xl font-bold text-white mb-5">Planning & Strategy</h4>
+            <p className="text-[#B0B0B0] text-sm font-light leading-relaxed px-4">
+              Planning and strategy is the most valuable step, which will help you go smoothly. We care about your company and ideas.
+            </p>
+          </div>
+
+          {/* Panel 3 — Design & Development */}
+          <div className="bg-[#333333] flex flex-col items-center justify-center px-8 py-16 text-center border-l border-white/5 group hover:bg-[#3d3d3d] transition-all duration-500">
+            <div className="mb-8 text-white group-hover:scale-110 transition-transform duration-500">
+              <Printer size={56} strokeWidth={1} />
+            </div>
+            <h4 className="text-xl font-bold text-white mb-5">Design & Development</h4>
+            <p className="text-[#B0B0B0] text-sm font-light leading-relaxed px-4">
+              Our work is progressed in a calm atmosphere. Our workers are quite intelligent and highly experienced in their business.
+            </p>
+          </div>
+
+          {/* Panel 4 — Testing & Delivery */}
+          <div className="bg-[#333333] flex flex-col items-center justify-center px-8 py-16 text-center border-l border-white/5 group hover:bg-[#3d3d3d] transition-all duration-500">
+            <div className="mb-8 text-white group-hover:scale-110 transition-transform duration-500">
+              <ImageIcon size={56} strokeWidth={1} />
+            </div>
+            <h4 className="text-xl font-bold text-white mb-5">Testing & Delivery</h4>
+            <p className="text-[#B0B0B0] text-sm font-light leading-relaxed px-4">
+              After each work, we check all your material items. Our workers are always wary of that. Delivery and installation are very fast and fully covered.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-32 bg-[#0A0A0A]">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+           <h3 className="text-4xl md:text-5xl font-light text-[#F5F5F5] tracking-wide mb-8">Refined Vision.</h3>
+           <p className="text-[#B0B0B0] text-lg font-light leading-relaxed mb-12">Elevate your corporate aesthetics to unprecedented levels.</p>
+           <Link to="/hamz-advertising/contact" className="inline-block px-12 py-4 border border-[#2F2F2F] text-[#F5F5F5] text-sm tracking-[0.2em] uppercase hover:bg-[#F5F5F5] hover:text-[#0A0A0A] hover:border-[#F5F5F5] transition-all duration-500 rounded-sm">
+               Initiate Dialogue
+           </Link>
+        </div>
+      </section>
+
+    </div>
+  );
+}

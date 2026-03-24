@@ -1,0 +1,12 @@
+Image dimensions: 944x1129
+Found shapes:
+{ minX: 149, maxX: 943, minY: 0, maxY: 1128, numPixels: 550706 }
+{ minX: 864, maxX: 911, minY: 1049, maxY: 1096, numPixels: 874 }
+{ minX: 338, maxX: 353, minY: 116, maxY: 140, numPixels: 140 }
+{ minX: 610, maxX: 623, minY: 279, maxY: 304, numPixels: 103 }
+{ minX: 806, maxX: 823, minY: 284, maxY: 302, numPixels: 102 }
+{ minX: 880, maxX: 902, minY: 321, maxY: 329, numPixels: 70 }
+{ minX: 681, maxX: 693, minY: 322, maxY: 335, numPixels: 60 }
+{ minX: 826, maxX: 835, minY: 312, maxY: 326, numPixels: 46 }
+{ minX: 271, maxX: 290, minY: 80, maxY: 83, numPixels: 40 }
+{ minX: 627, maxX: 640, minY: 274, maxY: 283, numPixels: 39 }
