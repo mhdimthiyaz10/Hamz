@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ArrowLeft } from 'lucide-react';
 
 const HamzTradingProducts = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,49 +15,68 @@ const HamzTradingProducts = () => {
             {/* Subtle Grid Background */}
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNSkiLz48L3N2Zz4=')] opacity-50 z-0"></div>
 
-            {/* Navbar - Sticky */}
-            <nav className="sticky top-0 w-full flex justify-between items-center py-6 px-8 md:px-16 xl:px-32 z-50 bg-[#050505]/80 backdrop-blur-md border-b border-white/5">
-                {/* Logo */}
-                <Link to="/hamz-trading" className="flex items-center">
-                    <div className="flex items-center h-8">
-                        <img src="/file88.png.png" alt="HAMZ Logo" className="h-[32px] md:h-[40px] w-auto object-contain drop-shadow-md relative z-50" />
+            {/* Header / Navigation */}
+            <nav className="w-full flex justify-between items-center py-8 px-6 md:px-12 lg:px-24 xl:px-40 z-50 relative">
+                
+                {/* Left: Responsive Space / Back to Hub */}
+                <div className="flex-1 md:flex-none md:w-12 lg:w-16 flex justify-start">
+                    <Link to="/" className="absolute left-4 md:left-8 flex items-center justify-center w-8 h-8 bg-[#0a0a0a]/60 backdrop-blur-xl border border-white/10 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] shadow-[0_4px_20px_rgba(0,0,0,0.5)] flex z-50">
+                        <ArrowLeft size={14} strokeWidth={2} />
+                    </Link>
+                </div>
+
+                {/* Logo (Centered explicitly on mobile, natural on desktop) */}
+                <div className="flex-1 flex justify-center md:justify-start">
+                    <Link to="/hamz-trading" className="flex items-center">
+                        <img src="/file88.png.png" alt="Hamz Trading Logo" className="h-[35px] md:h-[40px] lg:h-[45px] object-contain drop-shadow-lg relative z-50" />
+                    </Link>
+                </div>
+
+                {/* Right: Hamburger Toggle & Desktop Links */}
+                <div className="flex-1 flex justify-end">
+                    {/* Mobile Menu Toggle */}
+                    <button 
+                        className="md:hidden text-white z-50 p-2 focus:outline-none"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+
+                    {/* Nav Links (Desktop) */}
+                    <div className="hidden md:flex items-center gap-10 text-[12px] md:text-[13px] font-medium tracking-wide uppercase text-gray-300">
+                        <Link to="/hamz-trading" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
+                            Home
+                        </Link>
+                        <Link to="/hamz-trading/about" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
+                            About Us
+                        </Link>
+                        <Link to="/hamz-trading/products" className="px-8 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors shadow-lg whitespace-nowrap">
+                            Our Products
+                        </Link>
+                        <Link to="/hamz-trading/contact" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
+                            Contact Us
+                        </Link>
                     </div>
-                </Link>
-
-                {/* Mobile Menu Toggle */}
-                <button 
-                    className="lg:hidden text-white z-50 focus:outline-none"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
-
-                {/* Nav Links */}
-                <div className="hidden lg:flex items-center gap-10 text-[11px] font-bold tracking-[0.1em] uppercase text-gray-400">
-                    <Link to="/hamz-trading" className="hover:text-white transition-colors duration-300">
-                        HOME
-                    </Link>
-                    <Link to="/hamz-trading/about" className="hover:text-white transition-colors duration-300">
-                        ABOUT US
-                    </Link>
-                    <Link to="/hamz-trading/products" className="px-6 py-2 bg-[#FF7549] text-white rounded-full font-bold shadow-[0_0_20px_rgba(255,117,73,0.3)] transition-all">
-                        OUR PRODUCTS
-                    </Link>
-                    <Link to="/hamz-trading/contact" className="hover:text-white transition-colors duration-300">
-                        CONTACT US
-                    </Link>
                 </div>
             </nav>
 
             {/* Mobile Menu Overlay Card */}
-            {isMobileMenuOpen && (
-                <div className="fixed top-24 left-4 right-4 bg-[#12111A]/95 backdrop-blur-xl border border-white/5 rounded-3xl p-8 z-40 flex flex-col gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] lg:hidden">
-                    <Link to="/hamz-trading" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">Home</Link>
-                    <Link to="/hamz-trading/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">About Us</Link>
-                    <Link to="/hamz-trading/products" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-[15px] uppercase tracking-widest font-normal hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">Our Products</Link>
-                    <Link to="/hamz-trading/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors">Contact Us</Link>
-                </div>
-            )}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="absolute top-24 left-4 right-4 bg-[#12111A]/95 backdrop-blur-xl border border-white/5 rounded-3xl p-8 z-40 flex flex-col gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] md:hidden"
+                    >
+                        <Link to="/hamz-trading" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">Home</Link>
+                        <Link to="/hamz-trading/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">About Us</Link>
+                        <Link to="/hamz-trading/products" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-[15px] uppercase tracking-widest font-normal hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">Our Products</Link>
+                        <Link to="/hamz-trading/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors">Contact Us</Link>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <main className="flex-grow flex flex-col z-10 relative pt-10 min-h-[90vh]">
 
@@ -69,22 +88,22 @@ const HamzTradingProducts = () => {
                 </div>
 
                 {/* Premium Exact Placeholder Layout matching Reference */}
-                <div className="w-full flex-grow relative flex items-center justify-center min-h-[750px] lg:min-h-[800px]">
+                <div className="w-full relative flex items-center justify-center h-[340px] md:h-auto md:min-h-[750px] lg:min-h-[800px] overflow-hidden overflow-y-visible">
 
                     {/* Background Glows (Purple Left, Dark Green Right) */}
                     <div className="absolute top-[0%] left-[10%] w-[50%] h-[50%] bg-[#4c1d95] opacity-20 blur-[150px] rounded-full z-0 pointer-events-none"></div>
                     <div className="absolute bottom-[10%] right-[10%] w-[50%] h-[50%] bg-[#064e3b] opacity-20 blur-[150px] rounded-full z-0 pointer-events-none"></div>
 
                     {/* Diagonal Caution Tape Elements (Visual Decoration) */}
-                    <div className="absolute top-[45%] left-[-10%] w-[120%] h-16 bg-[#FFD700] rotate-[-15deg] z-10 flex items-center justify-around overflow-hidden border-t-[8px] border-b-[8px] border-black border-dashed opacity-95">
+                    <div className="absolute top-[60%] md:top-[45%] left-[-10%] w-[120%] h-6 md:h-16 bg-[#FFD700] rotate-[-15deg] z-10 flex items-center justify-around overflow-hidden border-t-[3px] border-b-[3px] md:border-t-[8px] md:border-b-[8px] border-black border-dashed opacity-95 pointer-events-none">
                         {[...Array(20)].map((_, i) => (
-                            <span key={i} className="text-black font-black text-sm sm:text-[1.1rem] tracking-[0.2em] uppercase whitespace-nowrap px-4 drop-shadow-sm">UNDER CONSTRUCTION</span>
+                            <span key={i} className="text-black font-black text-[9px] sm:text-[1.1rem] tracking-[0.2em] uppercase whitespace-nowrap px-2 md:px-4 drop-shadow-sm">UNDER CONSTRUCTION</span>
                         ))}
                     </div>
 
-                    <div className="absolute top-[40%] right-[-10%] w-[120%] h-16 bg-[#FFD700] rotate-[-10deg] z-10 flex items-center justify-around overflow-hidden border-t-[8px] border-b-[8px] border-black border-dashed opacity-95">
+                    <div className="absolute top-[46%] md:top-[40%] right-[-10%] w-[120%] h-6 md:h-16 bg-[#FFD700] rotate-[-10deg] z-10 flex items-center justify-around overflow-hidden border-t-[3px] border-b-[3px] md:border-t-[8px] md:border-b-[8px] border-black border-dashed opacity-95 pointer-events-none">
                         {[...Array(20)].map((_, i) => (
-                            <span key={i} className="text-black font-black text-sm sm:text-[1.1rem] tracking-[0.2em] uppercase whitespace-nowrap px-4 drop-shadow-sm">UNDER CONSTRUCTION</span>
+                            <span key={i} className="text-black font-black text-[9px] sm:text-[1.1rem] tracking-[0.2em] uppercase whitespace-nowrap px-2 md:px-4 drop-shadow-sm">UNDER CONSTRUCTION</span>
                         ))}
                     </div>
 
@@ -96,14 +115,14 @@ const HamzTradingProducts = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         viewport={{ once: false, margin: "-50px" }}
-                        className="absolute top-[-5%] md:top-[-2%] left-[0%] md:left-[4%] lg:left-[8%] z-20 flex flex-col items-center group cursor-pointer"
+                        className="absolute top-[13%] md:top-[-2%] left-[2%] md:left-[4%] lg:left-[8%] z-20 flex flex-col items-center group cursor-pointer w-auto"
                     >
-                        <h3 className="text-lg md:text-2xl font-black tracking-widest text-[#F1F1F1] uppercase mt-8 mb-4 drop-shadow-2xl group-hover:text-[#FF2A2A] transition-all translate-y-4 md:translate-y-6">SAFETY LOCKS</h3>
-                        <div className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.03]">
+                        <h3 className="text-[10px] md:text-2xl font-black tracking-widest text-[#F1F1F1] uppercase mb-1 md:mt-8 md:mb-4 drop-shadow-2xl group-hover:text-[#FF2A2A] transition-all md:translate-y-6">SAFETY LOCKS</h3>
+                        <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-72 md:h-72 lg:w-80 lg:h-80 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.03]">
                             <img
                                 src="/safety-locks.png"
                                 alt="Safety Locks"
-                                className="w-[110%] md:w-[120%] h-auto object-contain drop-shadow-2xl group-hover:scale-[1.05] transition-transform duration-500"
+                                className="w-[100%] md:w-[120%] h-auto object-contain drop-shadow-2xl group-hover:scale-[1.05] transition-transform duration-500"
                             />
                         </div>
                     </motion.div>
@@ -114,16 +133,16 @@ const HamzTradingProducts = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
                         viewport={{ once: false, margin: "-50px" }}
-                        className="absolute top-[-5%] md:top-[0%] right-[15%] md:right-[20%] lg:right-[28%] z-20 flex flex-row items-center group cursor-pointer"
+                        className="absolute top-[11%] md:top-[0%] left-[38%] sm:left-[42%] md:left-auto md:right-[20%] lg:right-[28%] z-20 flex flex-row items-center group cursor-pointer w-auto justify-center"
                     >
-                        <div className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.03]">
+                        <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-72 md:h-72 lg:w-80 lg:h-80 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.03]">
                             <img
                                 src="/spill-kit.png"
                                 alt="Oil & Chemical Absorbent Spill Kit"
-                                className="w-[120%] md:w-[130%] h-auto object-contain drop-shadow-2xl group-hover:scale-[1.05] transition-transform duration-500"
+                                className="w-[110%] md:w-[130%] h-auto object-contain drop-shadow-2xl group-hover:scale-[1.05] transition-transform duration-500"
                             />
                         </div>
-                        <h3 className="text-lg md:text-xl font-black tracking-widest text-[#F1F1F1] uppercase ml-2 text-left max-w-[160px] leading-tight drop-shadow-2xl group-hover:text-[#FF5722] transition-colors">OIL & CHEMICAL ABSORBENT</h3>
+                        <h3 className="text-[8px] sm:text-[10px] md:text-xl font-black tracking-[0.05em] md:tracking-widest text-[#F1F1F1] uppercase ml-1 md:ml-4 text-left max-w-[80px] sm:max-w-[100px] md:max-w-[160px] leading-tight drop-shadow-2xl group-hover:text-[#FF5722] transition-colors">OIL & CHEMICAL ABSORBENT</h3>
                     </motion.div>
 
                     {/* Product 3: BARRICADE LIGHT — just below the stripes */}
@@ -132,9 +151,9 @@ const HamzTradingProducts = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
                         viewport={{ once: false, margin: "-50px" }}
-                        className="absolute top-[75%] left-[42%] -translate-x-1/2 z-20 flex flex-col items-center group cursor-pointer"
+                        className="absolute top-[82%] md:top-[75%] left-[45%] md:left-[42%] -translate-x-1/2 md:-translate-x-1/2 z-20 flex flex-col items-center group cursor-pointer w-auto justify-center"
                     >
-                        <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.05]">
+                        <div className="relative w-16 h-16 sm:w-24 sm:h-24 md:w-40 md:h-40 lg:w-48 lg:h-48 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.05]">
                             <img
                                 src="/barricade-light.png"
                                 alt="Barricade Light"
@@ -149,13 +168,13 @@ const HamzTradingProducts = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
                         viewport={{ once: false, margin: "-50px" }}
-                        className="absolute bottom-[2%] md:bottom-[4%] lg:bottom-[5%] left-[5%] md:left-[15%] lg:left-[20%] z-20 flex flex-col items-center group cursor-pointer"
+                        className="absolute top-[61%] md:top-auto md:bottom-[4%] lg:bottom-[5%] left-[10%] md:left-[15%] lg:left-[20%] z-20 flex flex-col items-center group cursor-pointer w-auto justify-center"
                     >
-                        <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.05]">
+                        <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-64 md:h-64 lg:w-72 lg:h-72 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.05]">
                             <img
                                 src="/under-construction-sign.png"
                                 alt="Under Construction Sign"
-                                className="w-[120%] md:w-[130%] h-auto object-contain drop-shadow-2xl"
+                                className="w-[100%] md:w-[130%] h-auto object-contain drop-shadow-2xl"
                             />
                         </div>
                     </motion.div>
@@ -166,9 +185,9 @@ const HamzTradingProducts = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.9, ease: "easeOut", delay: 0.4 }}
                         viewport={{ once: false, margin: "-50px" }}
-                        className="absolute bottom-[-30%] md:bottom-[-25%] left-[30%] md:left-[40%] lg:left-[44%] z-20 flex flex-col items-center group cursor-pointer"
+                        className="absolute top-[66%] md:top-auto md:bottom-[-25%] left-[58%] md:left-[40%] lg:left-[44%] z-20 flex flex-col items-center group cursor-pointer w-auto justify-center"
                     >
-                        <div className="relative w-80 h-[28rem] md:w-96 md:h-[38rem] lg:w-[28rem] lg:h-[48rem] flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.05]">
+                        <div className="relative w-24 h-40 sm:w-32 sm:h-56 md:w-96 md:h-[38rem] lg:w-[28rem] lg:h-[48rem] flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.05]">
                             <img
                                 src="/windsock.png"
                                 alt="Windsock"
@@ -183,9 +202,9 @@ const HamzTradingProducts = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.9, ease: "easeOut", delay: 0.5 }}
                         viewport={{ once: false, margin: "-50px" }}
-                        className="absolute bottom-[2%] md:bottom-[5%] right-[-10%] md:right-[-5%] lg:right-[0%] z-20 flex flex-col items-center group cursor-pointer"
+                        className="absolute top-[24%] md:top-auto md:bottom-[5%] right-[-5%] md:right-[-5%] lg:right-[0%] z-20 flex flex-col items-center group cursor-pointer mt-0 md:mt-0 w-auto justify-center"
                     >
-                        <div className="relative w-80 h-[30rem] md:w-96 md:h-[40rem] lg:w-[36rem] lg:h-[50rem] flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.05]">
+                        <div className="relative w-36 h-56 sm:w-48 sm:h-72 md:w-96 md:h-[40rem] lg:w-[36rem] lg:h-[50rem] flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.05]">
                             <img
                                 src="/file99.png.PNG"
                                 alt="Safety Equipment"

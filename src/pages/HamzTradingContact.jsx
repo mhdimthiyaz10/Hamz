@@ -1,16 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
+import { Menu, X, ArrowLeft } from 'lucide-react';
 const HamzTradingContact = () => {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     return (
         <div className="min-h-screen bg-[#000000] text-white font-sans selection:bg-[#FF7549] selection:text-white pb-10">
+            {/* Header / Navigation */}
+            <nav className="w-full flex justify-between items-center py-8 px-6 md:px-12 lg:px-24 xl:px-40 z-50 relative">
+                
+                {/* Left: Responsive Space / Back to Hub */}
+                <div className="flex-1 md:flex-none md:w-12 lg:w-16 flex justify-start">
+                    <Link to="/" className="absolute left-4 md:left-8 flex items-center justify-center w-8 h-8 bg-[#0a0a0a]/60 backdrop-blur-xl border border-white/10 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] shadow-[0_4px_20px_rgba(0,0,0,0.5)] flex z-50">
+                        <ArrowLeft size={14} strokeWidth={2} />
+                    </Link>
+                </div>
+
+                {/* Logo (Centered explicitly on mobile, natural on desktop) */}
+                <div className="flex-1 flex justify-center md:justify-start">
+                    <Link to="/hamz-trading" className="flex items-center">
+                        <img src="/file88.png.png" alt="Hamz Trading Logo" className="h-[35px] md:h-[40px] lg:h-[45px] object-contain drop-shadow-lg relative z-50" />
+                    </Link>
+                </div>
+
+                {/* Right: Hamburger Toggle & Desktop Links */}
+                <div className="flex-1 flex justify-end">
+                    {/* Mobile Menu Toggle */}
+                    <button 
+                        className="md:hidden text-white z-50 p-2 focus:outline-none"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+
+                    {/* Nav Links (Desktop) */}
+                    <div className="hidden md:flex items-center gap-10 text-[12px] md:text-[13px] font-medium tracking-wide uppercase text-gray-300">
+                        <Link to="/hamz-trading" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
+                            Home
+                        </Link>
+                        <Link to="/hamz-trading/about" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
+                            About Us
+                        </Link>
+                        <Link to="/hamz-trading/products" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
+                            Our Products
+                        </Link>
+                        <Link to="/hamz-trading/contact" className="px-8 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors shadow-lg whitespace-nowrap">
+                            Contact Us
+                        </Link>
+                    </div>
+                </div>
+            </nav>
+
+            {/* Mobile Menu Overlay Card */}
+            {isMobileMenuOpen && (
+                <div className="absolute top-24 left-4 right-4 bg-[#12111A]/95 backdrop-blur-xl border border-white/5 rounded-3xl p-8 z-40 flex flex-col gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] md:hidden">
+                    <Link to="/hamz-trading" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">Home</Link>
+                    <Link to="/hamz-trading/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">About Us</Link>
+                    <Link to="/hamz-trading/products" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">Our Products</Link>
+                    <Link to="/hamz-trading/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-[15px] uppercase tracking-widest font-normal hover:text-[#FF7549] transition-colors">Contact Us</Link>
+                </div>
+            )}
+
             {/* --- Navigation / Breadcrumbs --- */}
-            <nav className="w-full py-12 px-8 md:px-16 xl:px-32 flex items-center gap-4 text-[13px] tracking-widest uppercase font-medium relative z-20">
+            <div className="w-full py-8 px-8 md:px-16 xl:px-32 flex items-center gap-4 text-[13px] tracking-widest uppercase font-medium relative z-20">
                 <Link to="/hamz-trading" className="hover:text-[#FF7549] transition-colors duration-300">HOME</Link>
                 <span className="w-12 h-[1px] bg-[#FF7549]"></span>
                 <span className="text-gray-500">CONTACT US</span>
-            </nav>
+            </div>
 
             <main className="w-full px-8 md:px-16 xl:px-32 relative z-10">
                 {/* --- Section Title --- */}

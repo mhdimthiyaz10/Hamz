@@ -57,7 +57,7 @@ const HamzTrading = () => {
                 <nav className="w-full flex justify-between items-center py-8 px-6 md:px-12 lg:px-24 xl:px-40 z-50 relative">
                     
                     {/* Left: Responsive Space / Back to Hub */}
-                    <div className="flex-1 flex justify-start">
+                    <div className="flex-1 md:flex-none md:w-12 lg:w-16 flex justify-start">
                         <Link to="/" className="absolute left-4 md:left-8 flex items-center justify-center w-8 h-8 bg-[#0a0a0a]/60 backdrop-blur-xl border border-white/10 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] shadow-[0_4px_20px_rgba(0,0,0,0.5)] md:flex z-50">
                             <ArrowLeft size={14} strokeWidth={2} />
                         </Link>
@@ -82,16 +82,16 @@ const HamzTrading = () => {
 
                         {/* Nav Links (Desktop) */}
                         <div className="hidden md:flex items-center gap-10 text-[12px] md:text-[13px] font-medium tracking-wide uppercase text-gray-300">
-                            <Link to="/hamz-trading" className="px-8 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors shadow-lg">
+                            <Link to="/hamz-trading" className="px-8 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors shadow-lg whitespace-nowrap">
                                 Home
                             </Link>
-                            <Link to="/hamz-trading/about" className="hover:text-white transition-colors duration-300">
+                            <Link to="/hamz-trading/about" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
                                 About Us
                             </Link>
-                            <Link to="/hamz-trading/products" className="hover:text-white transition-colors duration-300">
+                            <Link to="/hamz-trading/products" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
                                 Our Products
                             </Link>
-                            <Link to="/hamz-trading/contact" className="hover:text-white transition-colors duration-300">
+                            <Link to="/hamz-trading/contact" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
                                 Contact Us
                             </Link>
                         </div>
