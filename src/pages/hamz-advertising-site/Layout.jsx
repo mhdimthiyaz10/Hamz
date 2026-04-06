@@ -1,61 +1,145 @@
 import React, { useState } from 'react';
-import { Outlet, Link } from 'react-router-dom';
-import { Facebook, Instagram, ArrowLeft, Menu, X } from 'lucide-react';
+import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Instagram, ArrowLeft, Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { label: 'Home',     to: '/hamz-advertising' },
+  { label: 'About Us', to: '/hamz-advertising/about' },
+  { label: 'Gallery',  to: '/hamz-advertising/projects' },
+];
 
 export default function Layout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path) =>
+    path === '/hamz-advertising'
+      ? location.pathname === path
+      : location.pathname.startsWith(path);
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-[#0A0A0A] text-[#F5F5F5]" dir="ltr" style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
-      {/* Header */}
-      <header className="w-full bg-[#0A0A0A]/80 backdrop-blur-md border-b border-[#2F2F2F] sticky top-0 z-50 transition-all duration-300">
-        {/* Main Nav */}
-        <div className="container mx-auto px-6 py-4 md:py-8 flex justify-between items-center relative">
-           
-           {/* Left: Hub back button */}
-           <div className="flex-1 flex justify-start z-50">
-               <Link to="/" className="flex items-center justify-center w-8 h-8 bg-[#0a0a0a]/60 backdrop-blur-xl border border-white/10 text-[#F5F5F5] rounded-full hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-                  <ArrowLeft size={14} strokeWidth={2} />
-               </Link>
-           </div>
-           
-           {/* Logo (Center) */}
-           <div className="flex-[2] md:flex-1 flex justify-center flex-shrink-0 z-50">
-              <Link to="/hamz-advertising" className="block text-center transition-opacity hover:opacity-80">
-                <div className="text-[17px] md:text-2xl lg:text-3xl font-light tracking-[0.2em] uppercase text-[#F5F5F5] whitespace-nowrap">
-                  HAMZ <span className="font-bold text-[#8A8A8A]">ADVERTISING</span>
-                </div>
-              </Link>
-           </div>
-           
-           {/* Right: Hamburger Toggle & Desktop Links */}
-           <div className="flex-1 flex justify-end z-50">
-               {/* Mobile Menu Toggle */}
-               <button 
-                   className="md:hidden text-[#F5F5F5] p-2 focus:outline-none"
-                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-               >
-                   {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-               </button>
 
-               {/* Desktop Nav Links */}
-               <nav className="hidden md:flex flex-wrap justify-end gap-8 md:gap-12 text-[13px] uppercase tracking-widest text-[#B0B0B0] items-center">
-                  <Link to="/hamz-advertising" className="hover:text-[#F5F5F5] transition-colors duration-300">Home</Link>
-                  <Link to="/hamz-advertising/about" className="hover:text-[#F5F5F5] transition-colors duration-300">About Us</Link>
-                  <Link to="/hamz-advertising/projects" className="hover:text-[#F5F5F5] transition-colors duration-300">Gallery</Link>
-                  <Link to="/hamz-advertising/contact" className="hover:text-[#F5F5F5] transition-colors duration-300 border border-white/10 px-6 py-2 rounded-sm -my-2 flex items-center">Contact</Link>
-               </nav>
-           </div>
+      {/* ── Header ── */}
+      <header className="w-full sticky top-0 z-50" style={{ background: 'rgba(10,10,10,0.82)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+
+        {/* slim gold accent line at very top */}
+        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.45) 35%, rgba(212,175,55,0.45) 65%, transparent 100%)' }} />
+
+        <div className="container mx-auto px-6 flex items-center justify-between" style={{ height: '58px' }}>
+
+          {/* Left — back button */}
+          <div className="flex items-center" style={{ flex: '0 0 auto' }}>
+            <Link
+              to="/"
+              title="Back to Hub"
+              className="flex items-center justify-center rounded-full transition-all duration-300"
+              style={{ width: '32px', height: '32px', border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)' }}
+              onMouseEnter={e => { e.currentTarget.style.background='rgba(255,255,255,0.10)'; e.currentTarget.style.borderColor='rgba(212,175,55,0.5)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background='rgba(255,255,255,0.04)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.12)'; }}
+            >
+              <ArrowLeft size={13} strokeWidth={2} />
+            </Link>
+          </div>
+
+          {/* Centre — Logo */}
+          <div className="absolute left-1/2" style={{ transform: 'translateX(-50%)' }}>
+            <Link to="/hamz-advertising" className="transition-opacity hover:opacity-75">
+              <span style={{ fontSize: '14px', fontWeight: 300, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#F5F5F5', whiteSpace: 'nowrap' }}>
+                HAMZ&nbsp;<span style={{ fontWeight: 700, color: '#8A8A8A' }}>ADVERTISING</span>
+              </span>
+            </Link>
+          </div>
+
+          {/* Right — Desktop nav */}
+          <div className="flex items-center gap-1" style={{ flex: '0 0 auto' }}>
+
+            {/* Mobile hamburger */}
+            <button
+              className="md:hidden text-[#F5F5F5] p-2 focus:outline-none"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+
+            {/* Desktop links */}
+            <nav className="hidden md:flex items-center gap-1">
+              {navLinks.map(({ label, to }) => (
+                <Link
+                  key={to}
+                  to={to}
+                  style={{
+                    padding: '6px 14px',
+                    fontSize: '11px',
+                    letterSpacing: '0.16em',
+                    textTransform: 'uppercase',
+                    color: isActive(to) ? '#F5F5F5' : '#8A8A8A',
+                    position: 'relative',
+                    transition: 'color 0.25s',
+                    textDecoration: 'none',
+                    borderBottom: isActive(to) ? '1px solid rgba(212,175,55,0.7)' : '1px solid transparent',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.color = '#F5F5F5'; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = isActive(to) ? '#F5F5F5' : '#8A8A8A'; }}
+                >
+                  {label}
+                </Link>
+              ))}
+
+              {/* Contact CTA */}
+              <Link
+                to="/hamz-advertising/contact"
+                style={{
+                  marginLeft: '10px',
+                  padding: '7px 18px',
+                  fontSize: '11px',
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  color: isActive('/hamz-advertising/contact') ? '#d4af37' : '#c0c0c0',
+                  border: `1px solid ${isActive('/hamz-advertising/contact') ? 'rgba(212,175,55,0.7)' : 'rgba(255,255,255,0.14)'}`,
+                  borderRadius: '3px',
+                  background: isActive('/hamz-advertising/contact') ? 'rgba(212,175,55,0.07)' : 'transparent',
+                  transition: 'all 0.25s',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(212,175,55,0.7)'; e.currentTarget.style.color='#d4af37'; e.currentTarget.style.background='rgba(212,175,55,0.07)'; }}
+                onMouseLeave={e => {
+                  const a = isActive('/hamz-advertising/contact');
+                  e.currentTarget.style.borderColor = a ? 'rgba(212,175,55,0.7)' : 'rgba(255,255,255,0.14)';
+                  e.currentTarget.style.color = a ? '#d4af37' : '#c0c0c0';
+                  e.currentTarget.style.background = a ? 'rgba(212,175,55,0.07)' : 'transparent';
+                }}
+              >
+                Contact
+              </Link>
+            </nav>
+          </div>
         </div>
 
-        {/* Mobile Menu Overlay Card */}
+        {/* Mobile dropdown */}
         {isMobileMenuOpen && (
-            <div className="absolute top-20 left-4 right-4 bg-[#12111A]/95 backdrop-blur-xl border border-[#2F2F2F] rounded-3xl p-8 z-40 flex flex-col gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] md:hidden">
-                <Link to="/hamz-advertising" onClick={() => setIsMobileMenuOpen(false)} className="text-[#F5F5F5] text-[15px] uppercase tracking-widest font-normal hover:text-white transition-colors pb-2 border-b border-[#2F2F2F]">Home</Link>
-                <Link to="/hamz-advertising/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[#B0B0B0] text-[15px] uppercase tracking-widest font-normal hover:text-white transition-colors pb-2 border-b border-[#2F2F2F]">About Us</Link>
-                <Link to="/hamz-advertising/projects" onClick={() => setIsMobileMenuOpen(false)} className="text-[#B0B0B0] text-[15px] uppercase tracking-widest font-normal hover:text-white transition-colors pb-2 border-b border-[#2F2F2F]">Gallery</Link>
-                <Link to="/hamz-advertising/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[#B0B0B0] text-[15px] uppercase tracking-widest font-normal hover:text-white transition-colors">Contact</Link>
-            </div>
+          <div style={{ position: 'absolute', top: '60px', left: '12px', right: '12px', background: 'rgba(14,13,22,0.97)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '20px 24px', zIndex: 40, display: 'flex', flexDirection: 'column', gap: '0px', boxShadow: '0 24px 60px rgba(0,0,0,0.7)' }}>
+            {[...navLinks, { label: 'Contact', to: '/hamz-advertising/contact' }].map(({ label, to }, idx, arr) => (
+              <Link
+                key={to}
+                to={to}
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{
+                  padding: '14px 0',
+                  fontSize: '12px',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: isActive(to) ? '#d4af37' : '#9A9A9A',
+                  borderBottom: idx < arr.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s',
+                }}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         )}
       </header>
 

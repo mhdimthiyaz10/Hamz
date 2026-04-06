@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Settings, Layers, Box, Eye, Home as HomeIcon, Printer, ImageIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ScrollCard from '../../components/ui/scroll-card';
 
 const slides = [
   "https://images.unsplash.com/photo-1541888086082-cd2bd3e43f01?auto=format&fit=crop&q=80",
@@ -14,6 +15,46 @@ const slides = [
 const items = [
   {}, {}, {}, {}, {}, {},
 ];
+
+const GlowCard = ({ children, gradientStops }) => {
+  const cardRef = React.useRef(null);
+  const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    requestAnimationFrame(() => {
+      setMousePos({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    });
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative rounded-[20px] bg-[#0A0A0A] border border-[#2F2F2F] overflow-hidden group flex transition-colors duration-500 hover:border-[#8A8A8A] shadow-lg w-full"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 transition-opacity duration-300 ease-out z-0"
+        style={{
+          opacity: isHovered ? 1 : 0,
+          background: `radial-gradient(circle 500px at ${mousePos.x}px ${mousePos.y}px, ${gradientStops})`,
+        }}
+      />
+      <div className="absolute inset-[1px] rounded-[19px] bg-[#0A0A0A] z-0 transition-opacity duration-500 group-hover:opacity-[0.5]" />
+      
+      <div className="relative z-10 flex w-full pl-5 py-6 pr-5">
+        {children}
+      </div>
+    </div>
+  );
+};
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -61,221 +102,241 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Services Summary Section */}
-      <section className="py-24 md:py-32 px-6 max-w-6xl mx-auto">
-        <div className="text-center mb-24 flex flex-col items-center">
-          <div className="w-16 h-[1px] bg-[#F5F5F5] opacity-50 mb-8 self-start md:self-center ml-4 md:ml-0"></div>
-          <p 
-            className="text-lg md:text-xl lg:text-[22px] leading-[1.8] font-medium tracking-wide max-w-5xl mx-auto px-4 text-[#F5F5F5]" 
-            style={{ fontFamily: "'Montserrat', 'Inter', 'Helvetica Neue', sans-serif" }}
-          >
-            Specializing in the manufacture, design and installation of advertising and advertising boards<br className="hidden md:block" />
-            for government departments and commercial<br className="hidden md:block" />
-            companies Hidden or front-facing LED Stereoscopic Steel Lettering Boards + Acrylic Face<br className="hidden md:block" />
-            Hidden or Front Lighting<br className="hidden md:block" />
-            LED Painted Zancore Letter Boards + Acrylic Face Lighting
-          </p>
-        </div>
+      {/* Section 2 — Our Values + Services Overview (unified) */}
+      <ScrollCard />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-lg md:text-xl font-light text-[#B0B0B0] leading-loose">
-          <ul className="space-y-6">
-            <li className="flex items-start gap-4"><div className="w-2 h-2 rounded-full bg-[#8A8A8A] mt-3.5 opacity-60 flex-shrink-0"></div>Design & installation of cladding & wooden facades</li>
-            <li className="flex items-start gap-4"><div className="w-2 h-2 rounded-full bg-[#8A8A8A] mt-3.5 opacity-60 flex-shrink-0"></div>Premium styling and corporate installations</li>
-          </ul>
-          <ul className="space-y-6">
-            <li className="flex items-start gap-4"><div className="w-2 h-2 rounded-full bg-[#8A8A8A] mt-3.5 opacity-60 flex-shrink-0"></div>Advanced Neon and tailored Acrylic signs</li>
-            <li className="flex items-start gap-4"><div className="w-2 h-2 rounded-full bg-[#8A8A8A] mt-3.5 opacity-60 flex-shrink-0"></div>Minimalist iron stand structures for projects</li>
-          </ul>
-          <ul className="space-y-6">
-            <li className="flex items-start gap-4"><div className="w-2 h-2 rounded-full bg-[#8A8A8A] mt-3.5 opacity-60 flex-shrink-0"></div>Zincore and precise steel signs with subtle LED lighting</li>
-          </ul>
-        </div>
-      </section>
 
-      {/* Services Detail Section — Glowing Wave Background */}
+      {/* Premium Services Detail Section — Curved Flowing Lines Background */}
       <section className="relative py-24 md:py-32 px-6 bg-[#000000] border-t border-b border-[#1A1A1A] overflow-hidden">
-        {/* Animated glowing sine-wave SVG — matches reference image */}
-        <svg
-          className="pointer-events-none select-none"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: 0,
-          }}
-          preserveAspectRatio="none"
-          viewBox="0 0 1440 500"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            {/* Main white glow filter */}
-            <filter id="wave-glow" x="-30%" y="-80%" width="160%" height="260%">
-              <feGaussianBlur stdDeviation="14" result="blur1" />
-              <feGaussianBlur stdDeviation="28" result="blur2" />
-              <feMerge>
-                <feMergeNode in="blur2" />
-                <feMergeNode in="blur1" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-            {/* Softer outer halo */}
-            <filter id="wave-halo" x="-50%" y="-200%" width="200%" height="500%">
-              <feGaussianBlur stdDeviation="38" result="halo" />
-            </filter>
-          </defs>
-
-          {/* === Outer halo pass (very soft) === */}
-          <path
-            d="M-100,250 C120,80 360,420 720,250 C1080,80 1320,420 1540,250"
+        
+        {/* Curved Lines Background — Premium Technical Aesthetic */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden select-none" style={{ zIndex: 0 }}>
+          <svg
+            className="w-full h-full opacity-[0.15]"
+            viewBox="0 0 1440 800"
             fill="none"
-            stroke="rgba(255,255,255,0.06)"
-            strokeWidth="80"
-            filter="url(#wave-halo)"
-          />
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice"
+          >
+            {/* Symmetrical line groups inspired by reference image */}
+            <g className="lines-static" stroke="rgba(255,255,255,0.3)" strokeWidth="0.5">
+              {/* Top Left Quadrant */}
+              <path d="M-100,0 C200,0 400,200 400,500" />
+              <path d="M-100,50 C250,50 450,250 450,550" />
+              <path d="M-100,100 C300,100 500,300 500,600" />
+              <path d="M-100,150 C350,150 550,350 550,650" />
+              
+              {/* Top Right Quadrant */}
+              <path d="M1540,0 C1240,0 1040,200 1040,500" />
+              <path d="M1540,50 C1190,50 990,250 990,550" />
+              <path d="M1540,100 C1140,100 940,300 940,600" />
+              <path d="M1540,150 C1090,150 890,350 890,650" />
 
-          {/* === Mid glow pass === */}
-          <path
-            d="M-100,250 C120,80 360,420 720,250 C1080,80 1320,420 1540,250"
-            fill="none"
-            stroke="rgba(255,255,255,0.13)"
-            strokeWidth="32"
-            filter="url(#wave-glow)"
-          />
+              {/* Bottom Left Quadrant */}
+              <path d="M-100,800 C200,800 400,600 400,300" />
+              <path d="M-100,750 C250,750 450,550 450,250" />
+              <path d="M-100,700 C300,700 500,500 500,200" />
+              
+              {/* Bottom Right Quadrant */}
+              <path d="M1540,800 C1240,800 1040,600 1040,300" />
+              <path d="M1540,750 C1190,750 990,550 990,250" />
+              <path d="M1540,700 C1140,700 940,500 940,200" />
+            </g>
 
-          {/* === Sharp bright crest line === */}
-          <path
-            d="M-100,250 C120,80 360,420 720,250 C1080,80 1320,420 1540,250"
-            fill="none"
-            stroke="rgba(255,255,255,0.70)"
-            strokeWidth="1.2"
-            filter="url(#wave-glow)"
-          />
+            {/* Glowing Flowing Lines */}
+            <g className="lines-active" stroke="url(#flow-gradient)" strokeWidth="1.2">
+              <path d="M-100,100 C300,100 500,300 500,600" style={{ animation: 'line-flow 12s linear infinite', strokeDasharray: '120, 1000' }} />
+              <path d="M1540,100 C1140,100 940,300 940,600" style={{ animation: 'line-flow 15s linear infinite reverse', strokeDasharray: '120, 1000' }} />
+              <path d="M-100,700 C300,700 500,500 500,200" style={{ animation: 'line-flow 18s linear infinite', strokeDasharray: '120, 1000' }} />
+              <path d="M1540,700 C1140,700 940,500 940,200" style={{ animation: 'line-flow 14s linear infinite reverse', strokeDasharray: '120, 1000' }} />
+            </g>
 
-          {/* === Inline CSS animation for a slow drift === */}
-          <style>{`
-            @keyframes wave-drift {
-              0%   { d: path("M-100,250 C120,80 360,420 720,250 C1080,80 1320,420 1540,250"); }
-              50%  { d: path("M-100,270 C140,60 380,440 720,270 C1060,60 1300,440 1540,270"); }
-              100% { d: path("M-100,250 C120,80 360,420 720,250 C1080,80 1320,420 1540,250"); }
-            }
-          `}</style>
-        </svg>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="mb-24 text-center">
+            <defs>
+              <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="transparent" />
+                <stop offset="50%" stopColor="rgba(255,255,255,0.8)" />
+                <stop offset="100%" stopColor="transparent" />
+              </linearGradient>
+              <filter id="active-line-glow">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <style>{`
+              @keyframes line-flow {
+                0% { stroke-dashoffset: 1120; }
+                100% { stroke-dashoffset: -1120; }
+              }
+            `}</style>
+          </svg>
+
+          {/* Central soft ambient glow */}
+          <div 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px]" 
+            style={{ 
+              background: 'radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)',
+              filter: 'blur(60px)'
+            }} 
+          />
+        </div>
+
+        <div className="max-w-[1400px] mx-auto px-4 relative z-10">
+          <div className="mb-20 text-center">
              <h3 
                className="text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-[#FFFFFF] via-[#E4E4E4] to-[#999999] tracking-wider mb-6 drop-shadow-md"
                style={{ fontFamily: "'Playfair Display', 'Bodoni MT', 'Didot', 'Georgia', serif", fontWeight: 400, fontStyle: 'italic' }}
              >
-                Our Core Expertise
+                What we craft
              </h3>
              <h4 className="text-base md:text-lg font-light text-[#B0B0B0] leading-relaxed max-w-3xl mx-auto tracking-wide">
                  HAMZ ADVERTISING delivers great presentations and executes high-fidelity board works. Completed using sophisticated precision machinery and contemporary minimalist aesthetics.
              </h4>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
              {/* Service 1 - Timeline Layout */}
-             <div className="bg-[#1A1A1A] border border-[#2F2F2F] rounded-xl pl-6 py-8 pr-10 hover:border-[#8A8A8A] transition-colors duration-500 group flex">
+             <GlowCard gradientStops="rgba(139, 92, 246, 1) 0%, rgba(79, 70, 229, 1) 40%, rgba(0, 0, 0, 0.8) 80%, transparent 100%">
                 {/* Timeline Column */}
-                <div className="flex flex-col items-center mr-8 shrink-0 relative z-10 w-16">
-                   {/* Outer Circle & Icon */}
-                   <div className="w-16 h-16 rounded-full border-[2.5px] border-[#8A8A8A]/40 flex items-center justify-center bg-[#1A1A1A] group-hover:border-[#F5F5F5] transition-colors duration-500 mb-2">
-                     <Eye size={22} className="text-[#B0B0B0] group-hover:text-[#F5F5F5] transition-colors duration-500" strokeWidth={2} />
+                <div className="flex flex-col items-center mr-4 shrink-0 relative z-10 w-14">
+                   {/* Icon */}
+                   <div className="w-14 h-14 flex items-center justify-center mb-2">
+                     <Eye size={20} className="text-[#B0B0B0] group-hover:text-[#F5F5F5] transition-colors duration-500" strokeWidth={2} />
                    </div>
                    {/* Vertical Line */}
                    <div className="w-[1px] flex-grow bg-[#2F2F2F] group-hover:bg-[#444] transition-colors duration-500"></div>
                 </div>
 
                 {/* Text Content Column */}
-                <div className="flex-1 flex flex-col pt-3">
-                   <h4 className="text-xl font-medium text-[#F5F5F5] mb-4 tracking-wide">Signboards</h4>
-                   <p className="text-[#B0B0B0] text-[15px] leading-relaxed font-light mb-8">
-                      Advertising is one of the most usable identity of the business. We use only high quality of the work of this forum.
-                   </p>
-                   <ul className="text-[#8A8A8A] text-[15px] font-light space-y-4 relative">
-                      <li className="flex items-center relative">
-                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
-                         Neon Works
+                <div className="flex-1 flex flex-col pt-2 pointer-events-none">
+                   <h4 className="text-lg font-medium text-[#F5F5F5] mb-6 tracking-wide">Signage Solutions</h4>
+
+                   <ul className="text-[#8A8A8A] text-sm font-light space-y-3 relative pointer-events-none">
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Indoor &amp; Outdoor Signs
                       </li>
-                      <li className="flex items-center relative">
-                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
-                         Zincore Works
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Billboards
                       </li>
-                      <li className="flex items-center relative">
-                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
-                         Works Led
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         LED Displays
                       </li>
-                      <li className="flex items-center relative">
-                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
-                         Stainless Steel
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Wayfinding
+                      </li>
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Vehicle Wraps
                       </li>
                    </ul>
                 </div>
-             </div>
+             </GlowCard>
 
              {/* Service 2 - Timeline Layout */}
-             <div className="bg-[#1A1A1A] border border-[#2F2F2F] rounded-xl pl-6 py-8 pr-10 hover:border-[#8A8A8A] transition-colors duration-500 group flex">
+             <GlowCard gradientStops="rgba(244, 63, 94, 1) 0%, rgba(225, 29, 72, 1) 40%, rgba(0, 0, 0, 0.8) 80%, transparent 100%">
                 {/* Timeline Column */}
-                <div className="flex flex-col items-center mr-8 shrink-0 relative z-10 w-16">
-                   {/* Outer Circle & Icon */}
-                   <div className="w-16 h-16 rounded-full border-[2.5px] border-[#8A8A8A]/40 flex items-center justify-center bg-[#1A1A1A] group-hover:border-[#F5F5F5] transition-colors duration-500 mb-2">
-                     <ImageIcon size={22} className="text-[#B0B0B0] group-hover:text-[#F5F5F5] transition-colors duration-500" strokeWidth={2} />
+                <div className="flex flex-col items-center mr-4 shrink-0 relative z-10 w-14">
+                   {/* Icon */}
+                   <div className="w-14 h-14 flex items-center justify-center mb-2">
+                     <ImageIcon size={20} className="text-[#B0B0B0] group-hover:text-[#F5F5F5] transition-colors duration-500" strokeWidth={2} />
                    </div>
                    {/* Vertical Line */}
                    <div className="w-[1px] flex-grow bg-[#2F2F2F] group-hover:bg-[#444] transition-colors duration-500"></div>
                 </div>
 
                 {/* Text Content Column */}
-                <div className="flex-1 flex flex-col pt-3">
-                   <h4 className="text-xl font-medium text-[#F5F5F5] mb-4 tracking-wide">Flex Works</h4>
-                   <p className="text-[#B0B0B0] text-[15px] leading-relaxed font-light mb-8">
-                      Every entrepreneur should be needed to highlight their business brand. So we offer quality affinity and print output.
-                   </p>
-                   <ul className="text-[#8A8A8A] text-[15px] font-light space-y-4 relative">
-                      <li className="flex items-center relative">
-                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
-                         Works Sticker
+                <div className="flex-1 flex flex-col pt-2 pointer-events-none">
+                   <h4 className="text-lg font-medium text-[#F5F5F5] mb-6 tracking-wide">Printing Services</h4>
+
+                   <ul className="text-[#8A8A8A] text-sm font-light space-y-3 relative pointer-events-none">
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Brochures
                       </li>
-                      <li className="flex items-center relative">
-                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
-                         Printing Works
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Flyers
+                      </li>
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Business Cards
+                      </li>
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Banners, Posters, Packaging
+                      </li>
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         And other Marketings
                       </li>
                    </ul>
                 </div>
-             </div>
+             </GlowCard>
 
              {/* Service 3 - Timeline Layout */}
-             <div className="bg-[#1A1A1A] border border-[#2F2F2F] rounded-xl pl-6 py-8 pr-10 hover:border-[#8A8A8A] transition-colors duration-500 group flex">
+             <GlowCard gradientStops="rgba(16, 185, 129, 1) 0%, rgba(14, 165, 233, 1) 40%, rgba(0, 0, 0, 0.8) 80%, transparent 100%">
                 {/* Timeline Column */}
-                <div className="flex flex-col items-center mr-8 shrink-0 relative z-10 w-16">
-                   {/* Outer Circle & Icon */}
-                   <div className="w-16 h-16 rounded-full border-[2.5px] border-[#8A8A8A]/40 flex items-center justify-center bg-[#1A1A1A] group-hover:border-[#F5F5F5] transition-colors duration-500 mb-2">
-                     <Box size={22} className="text-[#B0B0B0] group-hover:text-[#F5F5F5] transition-colors duration-500" strokeWidth={2} />
+                <div className="flex flex-col items-center mr-4 shrink-0 relative z-10 w-14">
+                   {/* Icon */}
+                   <div className="w-14 h-14 flex items-center justify-center mb-2">
+                     <Box size={20} className="text-[#B0B0B0] group-hover:text-[#F5F5F5] transition-colors duration-500" strokeWidth={2} />
                    </div>
                    {/* Vertical Line */}
                    <div className="w-[1px] flex-grow bg-[#2F2F2F] group-hover:bg-[#444] transition-colors duration-500"></div>
                 </div>
 
                 {/* Text Content Column */}
-                <div className="flex-1 flex flex-col pt-3">
-                   <h4 className="text-xl font-medium text-[#F5F5F5] mb-4 tracking-wide">Acrylic and Plastic Work</h4>
-                   <p className="text-[#B0B0B0] text-[15px] leading-relaxed font-light mb-8">
-                      Acrylic is a type of board sign that signifies to give information about the way in which you can search. In other words, a path sign is to choose where you can go.
-                   </p>
-                   <ul className="text-[#8A8A8A] text-[15px] font-light space-y-4 relative">
-                      <li className="flex items-center relative">
-                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
-                         Acrylic Paintings
+                <div className="flex-1 flex flex-col pt-2 pointer-events-none">
+                   <h4 className="text-lg font-medium text-[#F5F5F5] mb-6 tracking-wide">Design and Branding</h4>
+
+                   <ul className="text-[#8A8A8A] text-sm font-light space-y-3 relative pointer-events-none">
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Logo Design
                       </li>
-                      <li className="flex items-center relative">
-                         <div className="absolute w-[10px] h-[10px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[69px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
-                         Plastic Works Board
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Brand Identity Development
+                      </li>
+                      <li className="flex items-center relative gap-2">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-1/2 -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         Layout Services Tailored to Your Audience
                       </li>
                    </ul>
                 </div>
-             </div>
+             </GlowCard>
+
+             {/* Service 4 - Timeline Layout (Copy of Signboards) */}
+             <GlowCard gradientStops="rgba(245, 158, 11, 1) 0%, rgba(217, 119, 6, 1) 40%, rgba(0, 0, 0, 0.8) 80%, transparent 100%">
+                {/* Timeline Column */}
+                <div className="flex flex-col items-center mr-4 shrink-0 relative z-10 w-14">
+                   {/* Icon */}
+                   <div className="w-14 h-14 flex items-center justify-center mb-2">
+                     <Eye size={20} className="text-[#B0B0B0] group-hover:text-[#F5F5F5] transition-colors duration-500" strokeWidth={2} />
+                   </div>
+                   {/* Vertical Line */}
+                   <div className="w-[1px] flex-grow bg-[#2F2F2F] group-hover:bg-[#444] transition-colors duration-500"></div>
+                </div>
+
+                {/* Text Content Column */}
+                <div className="flex-1 flex flex-col pt-2 pointer-events-none">
+                   <h4 className="text-lg font-medium text-[#F5F5F5] mb-6 tracking-wide">Installation &amp; Maintenance</h4>
+
+                   <ul className="text-[#8A8A8A] text-sm font-light space-y-3 relative pointer-events-none tracking-wide">
+                      <li className="flex items-center relative gap-2 leading-loose">
+                         <div className="absolute w-[8px] h-[8px] rounded-full border-2 border-[#8A8A8A] bg-[#1A1A1A] -left-[48px] top-[14px] -translate-y-1/2 group-hover:border-[#F5F5F5] transition-colors duration-500 z-20"></div>
+                         End-to-End Execution including expert installation and ongoing support for your signage
+                      </li>
+                   </ul>
+                </div>
+             </GlowCard>
           </div>
         </div>
       </section>

@@ -19,7 +19,8 @@ import SpotlightCard from './SpotlightCard';
 import VariableProximity from './VariableProximity';
 import TiltedCard from './TiltedCard';
 import Galaxy from './Galaxy';
-import LightPillar from './LightPillar';
+import PremiumGlowBackground from './PremiumGlowBackground';
+
 
 // --- UI Components ---
 
@@ -30,21 +31,8 @@ const HeroSection = () => {
     return (
         <div className="relative h-screen w-full flex flex-col justify-between items-center z-10 pointer-events-none pt-32 pb-12 overflow-hidden">
 
-            {/* LightPillar Background inside Hero Section */}
-            <div className="absolute inset-0 z-0 pointer-events-auto mix-blend-screen opacity-80">
-                <LightPillar
-                    topColor="#050505"
-                    bottomColor="#a3a3a3"
-                    intensity={0.9}
-                    rotationSpeed={0.2}
-                    interactive={true}
-                    glowAmount={0.015}
-                    pillarWidth={4.5}
-                    pillarHeight={0.25}
-                    noiseIntensity={0.5}
-                    mixBlendMode="screen"
-                    quality="high"
-                />
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <PremiumGlowBackground />
             </div>
 
             {/* Main Foreground Title Overlay over 3D Center */}
