@@ -73,6 +73,12 @@ const ScrollCard = forwardRef((props, ref) => {
               from { opacity: 0; transform: translateY(14px); }
               to   { opacity: 1; transform: translateY(0); }
             }
+            @keyframes line-flow {
+              0% { left: -60px; opacity: 0; }
+              10% { opacity: 1; }
+              90% { opacity: 1; }
+              100% { left: 100%; opacity: 0; }
+            }
           `}</style>
 
           <div className="text-center flex flex-col items-center mb-20 px-6 relative">
@@ -110,18 +116,33 @@ const ScrollCard = forwardRef((props, ref) => {
               Our Values
             </h2>
 
-            {/* Glowing accent line */}
+            {/* Glowing accent line container */}
             <div
-              className="mb-10 self-center rounded-full"
+              className="mb-10 self-center rounded-full overflow-hidden"
               style={{
-                width: '64px',
-                height: '1.5px',
-                background: 'linear-gradient(90deg, transparent, #d4af37, #c0c0c0, #d4af37, transparent)',
-                animation: 'glow-line 3s ease-in-out infinite',
+                width: '120px',
+                height: '2px',
+                background: 'rgba(212,175,55,0.15)',
                 position: 'relative',
                 zIndex: 10,
+                boxShadow: '0 0 10px rgba(212,175,55,0.1)',
               }}
-            />
+            >
+              {/* Flowing glow beam */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: '-60px',
+                  width: '60px',
+                  height: '100%',
+                  background: 'linear-gradient(90deg, transparent, #d4af37, #ffffff, #d4af37, transparent)',
+                  animation: 'line-flow 1.8s linear infinite',
+                  boxShadow: '0 0 15px 4px rgba(212, 175, 55, 0.6)',
+                  borderRadius: '50px'
+                }}
+              />
+            </div>
 
             {/* Paragraph with keyword highlights */}
             <p

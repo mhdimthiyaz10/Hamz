@@ -1,4 +1,5 @@
 import React from 'react';
+import ceoPhoto from '../../../assets/araabi.png.png';
 
 export default function About() {
   return (
@@ -41,6 +42,38 @@ export default function About() {
            <div className="overflow-hidden rounded-lg w-full md:w-[30%] mt-8 md:mt-16">
              <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80" alt="Gallery" className="w-full h-[250px] object-cover filter grayscale hover:grayscale-0 transition-all duration-700" />
            </div>
+        </div>
+      </section>
+
+      {/* CEO Profile Section */}
+      <section className="py-24 bg-[#0A0A0A] border-t border-[#2F2F2F]">
+        <div className="max-w-5xl mx-auto px-6">
+          <span className="text-[#8A8A8A] text-xs font-light tracking-[0.3em] uppercase mb-4 block text-center">Leadership</span>
+          <h3 className="text-3xl font-light text-[#F5F5F5] mb-12 text-center tracking-wide">Words From The Top</h3>
+
+          <div
+            className="flex flex-col md:flex-row items-center gap-8 bg-[#111111] border border-[#2F2F2F] rounded-xl p-8 transition-all duration-500 hover:border-[#555] hover:shadow-[0_0_40px_rgba(255,255,255,0.04)]"
+          >
+            {/* CEO Image */}
+            <div className="flex-shrink-0 w-[160px] h-[190px] rounded-lg overflow-hidden border border-[#2F2F2F]">
+              <img
+                src={ceoPhoto}
+                alt="Hussain Habeeb Yousif Al Saihati - CEO"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+
+            {/* Text Content */}
+            <div className="flex-1">
+              <h4 className="text-[#F5F5F5] text-xl font-semibold tracking-wide mb-1">
+                Hussain Habeeb Yousif Al Saihati
+              </h4>
+              <p className="text-[#8A8A8A] text-sm font-light tracking-[0.2em] uppercase mb-5">CEO</p>
+              <p className="text-[#C0C0C0] text-base leading-relaxed font-light italic">
+                "Quality is our prime asset. With this principle at our core, we strive to lead the market as a bulk supplier by delivering exemplary products and solutions across all safety and consumable materials."
+              </p>
+            </div>
+          </div>
         </div>
       </section>
       

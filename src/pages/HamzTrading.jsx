@@ -28,7 +28,7 @@ const HamzTrading = () => {
     useScrollReveal();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     return (
-        <div className="w-full bg-[#1A1B20] text-white font-sans selection:bg-[#FF7549] selection:text-white relative flex flex-col">
+        <div className="w-full bg-[#1A1B20] text-white font-sans selection:bg-[#F47920] selection:text-white relative flex flex-col">
 
             {/* --- HERO SECTION --- */}
             <section id="hero" className="relative min-h-screen w-full flex flex-col overflow-hidden bg-[#0A0A0A]">
@@ -101,10 +101,10 @@ const HamzTrading = () => {
                 {/* Mobile Menu Overlay Card */}
                 {isMobileMenuOpen && (
                     <div className="absolute top-24 left-4 right-4 bg-[#12111A]/95 backdrop-blur-xl border border-white/5 rounded-3xl p-8 z-40 flex flex-col gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] md:hidden">
-                        <Link to="/hamz-trading" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-[15px] uppercase tracking-widest font-normal hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">Home</Link>
-                        <Link to="/hamz-trading/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">About Us</Link>
-                        <Link to="/hamz-trading/products" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">Our Products</Link>
-                        <Link to="/hamz-trading/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors">Contact Us</Link>
+                        <Link to="/hamz-trading" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-[15px] uppercase tracking-widest font-normal hover:text-[#F47920] transition-colors pb-2 border-b border-white/5">Home</Link>
+                        <Link to="/hamz-trading/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#F47920] transition-colors pb-2 border-b border-white/5">About Us</Link>
+                        <Link to="/hamz-trading/products" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#F47920] transition-colors pb-2 border-b border-white/5">Our Products</Link>
+                        <Link to="/hamz-trading/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#F47920] transition-colors">Contact Us</Link>
                     </div>
                 )}
 
@@ -125,19 +125,19 @@ const HamzTrading = () => {
                         {/* Arabic Title */}
                         <div className="mb-4 md:mb-5 animate-hero-text" style={{ animationDelay: '0.2s' }}>
                             <h2 className="text-2xl md:text-[36px] text-gray-200 font-normal" dir="rtl" style={{ fontFamily: "Arial, Tahoma, sans-serif", wordSpacing: "6px" }}>
-                                مؤسسة حسين حبيب بن يوسف السيهاتي للتجارة
+                                مؤسسة حسين حبيب بن <span className="text-[#F47920]">يوسف السيهاتي</span> للتجارة
                             </h2>
                         </div>
 
                         {/* English Title */}
                         <h1 className="text-4xl md:text-5xl lg:text-[62px] font-semibold tracking-tight leading-[1.12]" style={{ fontFamily: "Outfit, Inter, sans-serif" }}>
                             <div className="text-gray-100 pb-2 animate-hero-text" style={{ animationDelay: '0.4s' }}>HUSSAIN HABEEB BIN</div>
-                            <div className="text-[#FF7549] pb-2 animate-hero-text" style={{ animationDelay: '0.5s' }}>YOUSIF AL SAIHATI</div>
+                            <div className="text-[#F47920] pb-2 animate-hero-text" style={{ animationDelay: '0.5s' }}>YOUSIF AL SAIHATI</div>
                             <div className="text-gray-100 animate-hero-text" style={{ animationDelay: '0.6s' }}>TRADING</div>
                         </h1>
 
                         {/* Quote */}
-                        <div className="flex pl-4 md:pl-5 border-l-[3px] border-[#FF7549] mt-8 md:mt-12 max-w-[650px] py-2 animate-hero-text" style={{ animationDelay: '0.8s' }}>
+                        <div className="flex pl-4 md:pl-5 border-l-[3px] border-[#F47920] mt-8 md:mt-12 max-w-[650px] py-2 animate-hero-text" style={{ animationDelay: '0.8s' }}>
                             <p className="text-[17px] md:text-[19px] text-gray-300 font-light leading-relaxed">
                                 "With honesty and integrity in every transaction trading with purpose, guided by values"
                             </p>

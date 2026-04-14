@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Settings, Layers, Box, Eye, Home as HomeIcon, Printer, ImageIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Settings, Layers, Box, Eye, Home as HomeIcon, Printer, ImageIcon, Target, PenTool, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollCard from '../../components/ui/scroll-card';
-
+import DottedWorldMap from '../../components/ui/DottedWorldMap';
 const slides = [
   "https://images.unsplash.com/photo-1541888086082-cd2bd3e43f01?auto=format&fit=crop&q=80",
   "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80",
@@ -106,11 +106,14 @@ export default function Home() {
       <ScrollCard />
 
 
-      {/* Premium Services Detail Section — Curved Flowing Lines Background */}
+      {/* Premium Services Detail Section — Map & Curved Lines Background */}
       <section className="relative py-24 md:py-32 px-6 bg-[#000000] border-t border-b border-[#1A1A1A] overflow-hidden">
         
-        {/* Curved Lines Background — Premium Technical Aesthetic */}
+        {/* Background Layer — Map & Lines */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden select-none" style={{ zIndex: 0 }}>
+          {/* Dotted World Map */}
+          <DottedWorldMap className="absolute inset-0 z-0 opacity-40 mix-blend-screen" />
+
           <svg
             className="w-full h-full opacity-[0.15]"
             viewBox="0 0 1440 800"
@@ -432,52 +435,65 @@ export default function Home() {
       </section>
 
       {/* Process Steps - Work Process In 3 Steps (Refined to match image) */}
-      <section className="w-full">
+      <section className="w-full border-y border-[#1A1A1A]">
         <div className="grid grid-cols-1 md:grid-cols-4">
 
           {/* Panel 1 — Intro (Unified Black) */}
-          <div className="bg-[#0A0A0A] flex flex-col justify-center px-12 py-16 text-left border-r border-white/5">
-            <h3 className="text-xl font-normal text-white leading-tight">
+          <div className="bg-[#050505] flex flex-col justify-center px-12 py-16 text-left border-r border-[#1A1A1A] relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#333] to-transparent"></div>
+            <h3 className="text-xl font-normal text-[#8A8A8A] leading-tight tracking-wide uppercase mb-2">
               Our Work Process
             </h3>
-            <h3 className="text-3xl font-black text-white leading-tight mb-6">
+            <h3 className="text-4xl font-light text-transparent bg-clip-text bg-gradient-to-r from-[#FFFFFF] to-[#888888] leading-tight mb-6 tracking-wide">
               In 3 Steps
             </h3>
-            <p className="text-[#B0B0B0] text-[15px] font-light leading-relaxed">
+            <p className="text-[#7A7A7A] text-[15px] font-light leading-relaxed">
               HAMZ ADVERTISING delivers high-quality outputs. Our work process depends on different stages: Planning and strategy, design and development, then testing and delivering the product.
             </p>
           </div>
 
           {/* Panel 2 — Planning & Strategy */}
-          <div className="bg-[#333333] flex flex-col items-center justify-center px-8 py-16 text-center border-l border-white/5 group hover:bg-[#3d3d3d] transition-all duration-500">
-            <div className="mb-8 text-white group-hover:scale-110 transition-transform duration-500">
-              <HomeIcon size={56} strokeWidth={1} />
+          <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] flex flex-col items-center justify-center px-8 py-16 text-center border-r border-[#1A1A1A] group hover:from-[#1A1A1A] hover:to-[#0F0F0F] transition-all duration-500 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#222] to-[#050505] border border-[#333] shadow-[0_4px_15px_rgba(0,0,0,0.5)] flex items-center justify-center mb-8 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:border-[#555] transition-all duration-500">
+               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+               <Target size={22} className="text-[#A0A0A0] group-hover:text-white transition-colors duration-500 z-10" strokeWidth={1.5} />
             </div>
-            <h4 className="text-xl font-bold text-white mb-5">Planning & Strategy</h4>
-            <p className="text-[#B0B0B0] text-sm font-light leading-relaxed px-4">
+
+            <h4 className="text-lg font-medium tracking-wide text-[#EAEAEA] mb-4">Planning & Strategy</h4>
+            <p className="text-[#7A7A7A] text-sm font-light leading-relaxed px-4">
               Planning and strategy is the most valuable step, which will help you go smoothly. We care about your company and ideas.
             </p>
           </div>
 
           {/* Panel 3 — Design & Development */}
-          <div className="bg-[#333333] flex flex-col items-center justify-center px-8 py-16 text-center border-l border-white/5 group hover:bg-[#3d3d3d] transition-all duration-500">
-            <div className="mb-8 text-white group-hover:scale-110 transition-transform duration-500">
-              <Printer size={56} strokeWidth={1} />
+          <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] flex flex-col items-center justify-center px-8 py-16 text-center border-r border-[#1A1A1A] group hover:from-[#1A1A1A] hover:to-[#0F0F0F] transition-all duration-500 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#222] to-[#050505] border border-[#333] shadow-[0_4px_15px_rgba(0,0,0,0.5)] flex items-center justify-center mb-8 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:border-[#555] transition-all duration-500">
+               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+               <PenTool size={22} className="text-[#A0A0A0] group-hover:text-white transition-colors duration-500 z-10" strokeWidth={1.5} />
             </div>
-            <h4 className="text-xl font-bold text-white mb-5">Design & Development</h4>
-            <p className="text-[#B0B0B0] text-sm font-light leading-relaxed px-4">
+
+            <h4 className="text-lg font-medium tracking-wide text-[#EAEAEA] mb-4">Design & Development</h4>
+            <p className="text-[#7A7A7A] text-sm font-light leading-relaxed px-4">
               Our work is progressed in a calm atmosphere. Our workers are quite intelligent and highly experienced in their business.
             </p>
           </div>
 
           {/* Panel 4 — Testing & Delivery */}
-          <div className="bg-[#333333] flex flex-col items-center justify-center px-8 py-16 text-center border-l border-white/5 group hover:bg-[#3d3d3d] transition-all duration-500">
-            <div className="mb-8 text-white group-hover:scale-110 transition-transform duration-500">
-              <ImageIcon size={56} strokeWidth={1} />
+          <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] flex flex-col items-center justify-center px-8 py-16 text-center group hover:from-[#1A1A1A] hover:to-[#0F0F0F] transition-all duration-500 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#222] to-[#050505] border border-[#333] shadow-[0_4px_15px_rgba(0,0,0,0.5)] flex items-center justify-center mb-8 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:border-[#555] transition-all duration-500">
+               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+               <Rocket size={22} className="text-[#A0A0A0] group-hover:text-white transition-colors duration-500 z-10" strokeWidth={1.5} />
             </div>
-            <h4 className="text-xl font-bold text-white mb-5">Testing & Delivery</h4>
-            <p className="text-[#B0B0B0] text-sm font-light leading-relaxed px-4">
-              After each work, we check all your material items. Our workers are always wary of that. Delivery and installation are very fast and fully covered.
+
+            <h4 className="text-lg font-medium tracking-wide text-[#EAEAEA] mb-4">Testing & Delivery</h4>
+            <p className="text-[#7A7A7A] text-sm font-light leading-relaxed px-4">
+              After each work, we check all your material items. Our workers are always wary of that. Delivery and installation are very fast.
             </p>
           </div>
 

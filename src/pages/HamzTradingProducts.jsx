@@ -6,10 +6,10 @@ import { Menu, X, ArrowLeft } from 'lucide-react';
 const HamzTradingProducts = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     return (
-        <div className="w-full min-h-screen bg-[#050505] text-white font-sans selection:bg-[#FF7549] selection:text-white relative flex flex-col overflow-x-hidden">
+        <div className="w-full min-h-screen bg-[#050505] text-white font-sans selection:bg-[#F47920] selection:text-white relative flex flex-col overflow-x-hidden">
 
             {/* Premium Ambient Background */}
-            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[70%] bg-[#FF7549] opacity-[0.05] blur-[150px] rounded-full pointer-events-none z-0"></div>
+            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[70%] bg-[#F47920] opacity-[0.05] blur-[150px] rounded-full pointer-events-none z-0"></div>
             <div className="absolute bottom-0 right-[-10%] w-[50%] h-[70%] bg-[#2a0e41] opacity-[0.1] blur-[150px] rounded-full pointer-events-none z-0"></div>
 
             {/* Subtle Grid Background */}
@@ -70,10 +70,10 @@ const HamzTradingProducts = () => {
                         transition={{ duration: 0.3, ease: "easeOut" }}
                         className="absolute top-24 left-4 right-4 bg-[#12111A]/95 backdrop-blur-xl border border-white/5 rounded-3xl p-8 z-40 flex flex-col gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] md:hidden"
                     >
-                        <Link to="/hamz-trading" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">Home</Link>
-                        <Link to="/hamz-trading/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">About Us</Link>
-                        <Link to="/hamz-trading/products" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-[15px] uppercase tracking-widest font-normal hover:text-[#FF7549] transition-colors pb-2 border-b border-white/5">Our Products</Link>
-                        <Link to="/hamz-trading/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#FF7549] transition-colors">Contact Us</Link>
+                        <Link to="/hamz-trading" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#F47920] transition-colors pb-2 border-b border-white/5">Home</Link>
+                        <Link to="/hamz-trading/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#F47920] transition-colors pb-2 border-b border-white/5">About Us</Link>
+                        <Link to="/hamz-trading/products" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-[15px] uppercase tracking-widest font-normal hover:text-[#F47920] transition-colors pb-2 border-b border-white/5">Our Products</Link>
+                        <Link to="/hamz-trading/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] uppercase tracking-widest font-normal text-gray-400 hover:text-[#F47920] transition-colors">Contact Us</Link>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -83,8 +83,8 @@ const HamzTradingProducts = () => {
                 {/* Breadcrumbs */}
                 <div className="w-full px-8 md:px-16 xl:px-32 flex items-center gap-6 mb-8 max-w-[1600px] mx-auto z-30 font-sans font-bold">
                     <Link to="/hamz-trading" className="text-[14px] md:text-[16px] xl:text-[20px] tracking-[0.2em] text-gray-500 hover:text-white transition-colors duration-300 uppercase">Home</Link>
-                    <div className="w-12 h-[1px] bg-[#FF7549]"></div>
-                    <span className="text-[14px] md:text-[16px] xl:text-[20px] tracking-[0.2em] text-[#FF7549] uppercase">Our Products</span>
+                    <div className="w-12 h-[1px] bg-[#F47920]"></div>
+                    <span className="text-[14px] md:text-[16px] xl:text-[20px] tracking-[0.2em] text-[#F47920] uppercase">Our Products</span>
                 </div>
 
                 {/* Premium Exact Placeholder Layout matching Reference */}
@@ -117,7 +117,7 @@ const HamzTradingProducts = () => {
                         viewport={{ once: false, margin: "-50px" }}
                         className="absolute top-[13%] md:top-[-2%] left-[2%] md:left-[4%] lg:left-[8%] z-20 flex flex-col items-center group cursor-pointer w-auto"
                     >
-                        <h3 className="text-[10px] md:text-2xl font-black tracking-widest text-[#F1F1F1] uppercase mb-1 md:mt-8 md:mb-4 drop-shadow-2xl group-hover:text-[#FF2A2A] transition-all md:translate-y-6">SAFETY LOCKS</h3>
+                        <h3 className="text-[10px] md:text-2xl font-black tracking-widest text-[#F1F1F1] uppercase mb-1 md:mt-8 md:mb-4 drop-shadow-2xl group-hover:text-[#F47920] transition-all md:translate-y-6">SAFETY LOCKS</h3>
                         <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-72 md:h-72 lg:w-80 lg:h-80 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.03]">
                             <img
                                 src="/safety-locks.png"
@@ -142,7 +142,7 @@ const HamzTradingProducts = () => {
                                 className="w-[110%] md:w-[130%] h-auto object-contain drop-shadow-2xl group-hover:scale-[1.05] transition-transform duration-500"
                             />
                         </div>
-                        <h3 className="text-[8px] sm:text-[10px] md:text-xl font-black tracking-[0.05em] md:tracking-widest text-[#F1F1F1] uppercase ml-1 md:ml-4 text-left max-w-[80px] sm:max-w-[100px] md:max-w-[160px] leading-tight drop-shadow-2xl group-hover:text-[#FF5722] transition-colors">OIL & CHEMICAL ABSORBENT</h3>
+                        <h3 className="text-[8px] sm:text-[10px] md:text-xl font-black tracking-[0.05em] md:tracking-widest text-[#F1F1F1] uppercase ml-1 md:ml-4 text-left max-w-[80px] sm:max-w-[100px] md:max-w-[160px] leading-tight drop-shadow-2xl group-hover:text-[#F47920] transition-colors">OIL & CHEMICAL ABSORBENT</h3>
                     </motion.div>
 
                     {/* Product 3: BARRICADE LIGHT — just below the stripes */}
@@ -250,7 +250,7 @@ const HamzTradingProducts = () => {
                             <div className="w-full flex flex-row justify-between items-start mb-8 md:mb-12 px-2 md:px-0">
                                 {/* Left text area of right column */}
                                 <div className="flex flex-col md:mt-2">
-                                    <span className="text-[#FF7549] text-4xl md:text-5xl lg:text-6xl leading-[0.8]" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}>Safety</span>
+                                    <span className="text-[#F47920] text-4xl md:text-5xl lg:text-6xl leading-[0.8]" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}>Safety</span>
                                     <span className="text-[#4b5563] text-[14px] md:text-[16px] lg:text-[18px] font-light tracking-[0.1em] uppercase mt-3 lg:mt-4 whitespace-nowrap">IS IN YOUR HAND</span>
                                 </div>
 
@@ -535,7 +535,7 @@ const HamzTradingProducts = () => {
                             >
                                 <div className="hidden sm:flex items-center -ml-2">
                                     <h3
-                                        className="text-[#FF7549] text-xl md:text-2xl whitespace-nowrap rotate-180"
+                                        className="text-[#F47920] text-xl md:text-2xl whitespace-nowrap rotate-180"
                                         style={{ fontFamily: "'Dancing Script', cursive", writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontWeight: 700 }}
                                     >
                                         Tools &amp; Hardware
@@ -548,7 +548,7 @@ const HamzTradingProducts = () => {
                                         "Wood Saws & Handsaws", "Chisel Punches & Files", "Sheet Metal Tools"
                                     ].map((item, idx) => (
                                         <div key={idx} className="flex items-center gap-2">
-                                            <span className="text-[#FF7549] text-[8px]">★</span>
+                                            <span className="text-[#F47920] text-[8px]">★</span>
                                             <span className="text-gray-400 text-[11px] md:text-[12px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item}</span>
                                         </div>
                                     ))}
@@ -578,7 +578,7 @@ const HamzTradingProducts = () => {
                                         "Bolt Cutters", "Feeler Gauges", "Hand Tools", "Storage System", "Vises"
                                     ].map((item, idx) => (
                                         <div key={idx} className="flex items-center gap-2">
-                                            <span className="text-[#FF7549] text-[8px]">★</span>
+                                            <span className="text-[#F47920] text-[8px]">★</span>
                                             <span className="text-gray-400 text-[11px] md:text-[12px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item}</span>
                                         </div>
                                     ))}
@@ -604,7 +604,7 @@ const HamzTradingProducts = () => {
                             >
                                 <div className="flex flex-col flex-grow">
                                     <h3
-                                        className="text-[#FF7549] text-xl md:text-2xl mb-4"
+                                        className="text-[#F47920] text-xl md:text-2xl mb-4"
                                         style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
                                     >
                                         Power Tools
@@ -616,7 +616,7 @@ const HamzTradingProducts = () => {
                                             "Heavy duty drilling Machin"
                                         ].map((item, idx) => (
                                             <div key={idx} className="flex items-center gap-2">
-                                                <span className="text-[#FF7549] text-[8px]">★</span>
+                                                <span className="text-[#F47920] text-[8px]">★</span>
                                                 <span className="text-gray-400 text-[11px] md:text-[12px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item}</span>
                                             </div>
                                         ))}
@@ -651,7 +651,7 @@ const HamzTradingProducts = () => {
                             className="flex flex-col gap-6 md:items-start"
                         >
                             <h3
-                                className="text-[#FF7549] text-3xl md:text-4xl"
+                                className="text-[#F47920] text-3xl md:text-4xl"
                                 style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
                             >
                                 Bolt &amp; Nuts
@@ -663,7 +663,7 @@ const HamzTradingProducts = () => {
                                     "Scrub Screws", "Self Drilling Screws"
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-center gap-2">
-                                        <span className="text-[#FF7549] text-[8px]">★</span>
+                                        <span className="text-[#F47920] text-[8px]">★</span>
                                         <span className="text-gray-400 text-[11px] md:text-[13px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item}</span>
                                     </div>
                                 ))}
@@ -698,7 +698,7 @@ const HamzTradingProducts = () => {
                             className="flex flex-col gap-6 md:items-start md:pl-8"
                         >
                             <h3
-                                className="text-[#FF7549] text-3xl md:text-4xl"
+                                className="text-[#F47920] text-3xl md:text-4xl"
                                 style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
                             >
                                 Torque Wrenches
@@ -708,7 +708,7 @@ const HamzTradingProducts = () => {
                                     "Dial Torque Wrenches", "Electronic Torque Wrenches", "Torque Multiplyers"
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-center gap-2">
-                                        <span className="text-[#FF7549] text-[8px]">★</span>
+                                        <span className="text-[#F47920] text-[8px]">★</span>
                                         <span className="text-gray-400 text-[11px] md:text-[13px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item}</span>
                                     </div>
                                 ))}
@@ -742,7 +742,7 @@ const HamzTradingProducts = () => {
                             >
                                 <div className="hidden sm:flex items-center -ml-4">
                                     <h3
-                                        className="text-[#FF7549] text-2xl md:text-3xl whitespace-nowrap rotate-180"
+                                        className="text-[#F47920] text-2xl md:text-3xl whitespace-nowrap rotate-180"
                                         style={{ fontFamily: "'Dancing Script', cursive", writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontWeight: 700 }}
                                     >
                                         Steel Product Range
@@ -777,7 +777,7 @@ const HamzTradingProducts = () => {
                                         { name: "U Channel", bullet: "★" }
                                     ].map((item, idx) => (
                                         <div key={idx} className="flex items-center gap-2">
-                                            <span className="text-[#FF7549] text-[8px]">{item.bullet}</span>
+                                            <span className="text-[#F47920] text-[8px]">{item.bullet}</span>
                                             <span className="text-gray-400 text-[11px] md:text-[12px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item.name}</span>
                                         </div>
                                     ))}
@@ -812,7 +812,7 @@ const HamzTradingProducts = () => {
                                 {/* Carpentry Accessories */}
                                 <div className="flex flex-col gap-4">
                                     <h3
-                                        className="text-[#FF7549] text-2xl md:text-3xl"
+                                        className="text-[#F47920] text-2xl md:text-3xl"
                                         style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
                                     >
                                         Carpentry Accessories
@@ -824,7 +824,7 @@ const HamzTradingProducts = () => {
                                             "Teak Wood & Maple Wood", "MDF Board"
                                         ].map((item, idx) => (
                                             <div key={idx} className="flex items-center gap-2">
-                                                <span className="text-[#FF7549] text-[8px]">★</span>
+                                                <span className="text-[#F47920] text-[8px]">★</span>
                                                 <span className="text-gray-400 text-[11px] md:text-[12px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item}</span>
                                             </div>
                                         ))}
@@ -834,7 +834,7 @@ const HamzTradingProducts = () => {
                                 {/* Carpentry Wood */}
                                 <div className="flex flex-col gap-4">
                                     <h3
-                                        className="text-[#FF7549] text-2xl md:text-3xl"
+                                        className="text-[#F47920] text-2xl md:text-3xl"
                                         style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
                                     >
                                         Carpentry Wood
@@ -844,7 +844,7 @@ const HamzTradingProducts = () => {
                                             "Wood Glue", "Door Handle", "Beeding Roll", "Hinges"
                                         ].map((item, idx) => (
                                             <div key={idx} className="flex items-center gap-2">
-                                                <span className="text-[#FF7549] text-[8px]">★</span>
+                                                <span className="text-[#F47920] text-[8px]">★</span>
                                                 <span className="text-gray-400 text-[11px] md:text-[12px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item}</span>
                                             </div>
                                         ))}
@@ -868,7 +868,7 @@ const HamzTradingProducts = () => {
                             className="flex flex-col gap-8"
                         >
                             <h3
-                                className="text-[#FF7549] text-3xl md:text-4xl"
+                                className="text-[#F47920] text-3xl md:text-4xl"
                                 style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
                             >
                                 Electrical Material
@@ -915,7 +915,7 @@ const HamzTradingProducts = () => {
                         >
                             <div className="flex flex-col gap-8 flex-1">
                                 <h3
-                                    className="text-[#FFC200] text-3xl md:text-4xl" // CHANGED TO FLUKE YELLOW
+                                    className="text-[#F47920] text-3xl md:text-4xl"
                                     style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
                                 >
                                     Inspection &amp; Measuring Gauges
@@ -970,7 +970,7 @@ const HamzTradingProducts = () => {
                             className="flex flex-col gap-6 md:items-start"
                         >
                             <h3
-                                className="text-[#FF7549] text-3xl md:text-4xl"
+                                className="text-[#F47920] text-3xl md:text-4xl"
                                 style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
                             >
                                 Industrial Chemicals &amp; Lubricants
@@ -994,7 +994,7 @@ const HamzTradingProducts = () => {
                                     "Sales of TDI, Polyosis, and Titanium Dioxide from world's leading producers."
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-center gap-2">
-                                        <span className="text-[#FF7549] text-[8px]">★</span>
+                                        <span className="text-[#F47920] text-[8px]">★</span>
                                         <span className="text-gray-400 text-[11px] md:text-[13px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default leading-relaxed max-w-[500px]">{item}</span>
                                     </div>
                                 ))}
@@ -1036,7 +1036,7 @@ const HamzTradingProducts = () => {
                             className="flex flex-col gap-8"
                         >
                             <h3
-                                className="text-[#FF7549] text-3xl md:text-4xl"
+                                className="text-[#F47920] text-3xl md:text-4xl"
                                 style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
                             >
                                 Industrial Accessories
@@ -1052,7 +1052,7 @@ const HamzTradingProducts = () => {
                                         "PART STREN", "DEWALT"
                                     ].map((item, idx) => (
                                         <div key={idx} className="flex items-center gap-2 whitespace-nowrap">
-                                            <span className="text-[#FF7549] text-[8px]">★</span>
+                                            <span className="text-[#F47920] text-[8px]">★</span>
                                             <span className="text-gray-400 text-[11px] md:text-[13px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item}</span>
                                         </div>
                                     ))}
@@ -1066,7 +1066,7 @@ const HamzTradingProducts = () => {
                                         "BLACK& DEC"
                                     ].map((item, idx) => (
                                         <div key={idx} className="flex items-center gap-2 whitespace-nowrap">
-                                            <span className="text-[#FF7549] text-[8px]">★</span>
+                                            <span className="text-[#F47920] text-[8px]">★</span>
                                             <span className="text-gray-400 text-[11px] md:text-[13px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item}</span>
                                         </div>
                                     ))}
@@ -1091,7 +1091,7 @@ const HamzTradingProducts = () => {
                                         "Dryers", "Pressure Washers"
                                     ].map((item, idx) => (
                                         <div key={idx} className="flex items-center gap-2 whitespace-nowrap">
-                                            <span className="text-[#FF7549] text-[8px]">★</span>
+                                            <span className="text-[#F47920] text-[8px]">★</span>
                                             <span className="text-gray-400 text-[11px] md:text-[13px] font-medium tracking-wide uppercase hover:text-white transition-colors cursor-default">{item}</span>
                                         </div>
                                     ))}
@@ -1101,13 +1101,13 @@ const HamzTradingProducts = () => {
                             {/* Image Placeholder on the right of the cleaning list */}
                             <div className="w-full md:w-[320px] lg:w-[400px] flex-shrink-0 group md:mt-0 flex flex-col gap-6">
                                 <h3
-                                    className="text-[#FF7549] text-2xl md:text-3xl text-center md:text-left"
+                                    className="text-[#F47920] text-2xl md:text-3xl text-center md:text-left"
                                     style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
                                 >
                                     Industrial Cleaning Material &amp; Equipment
                                 </h3>
                                 <div className="w-full aspect-square flex items-center justify-center relative transition-transform duration-700 group-hover:scale-[1.05]">
-                                    <div className="absolute inset-0 bg-[#FF7549] opacity-[0.03] blur-3xl rounded-full"></div>
+                                    <div className="absolute inset-0 bg-[#F47920] opacity-[0.03] blur-3xl rounded-full"></div>
                                     <div className="w-full h-full flex items-center justify-center relative z-10 overflow-hidden group">
                                         <img
                                             src="/cleaning-supplies-black.png"

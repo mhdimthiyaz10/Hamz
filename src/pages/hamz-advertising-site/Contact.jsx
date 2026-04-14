@@ -17,48 +17,36 @@ export default function Contact() {
            {/* Main Office */}
            <div>
               <span className="text-[#8A8A8A] text-[10px] uppercase tracking-[0.2em] block mb-2">Headquarters</span>
-              <h3 className="text-2xl font-light text-[#F5F5F5] uppercase tracking-wide mb-6">Exit 27</h3>
-              
-              <div className="h-[300px] w-full bg-[#1A1A1A] rounded-xl overflow-hidden border border-[#2F2F2F] filter grayscale transition-all duration-700 hover:grayscale-0 mb-6">
+              <h3 className="text-2xl font-light text-[#F5F5F5] uppercase tracking-wide mb-6">Dammam Office</h3>
+              <div className="h-[300px] w-full bg-[#1A1A1A] rounded-xl overflow-hidden border border-[#2F2F2F] mb-6">
                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14506.772591605342!2d46.623429!3d24.565969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDMzJzU3LjUiTiA0NsKwMzcnMjQuMyJF!5e0!3m2!1sen!2sae!4v1650000000000" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114389.76189917387!2d50.007626966144865!3d26.371948496417753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49fb0749000001%3A0x7d6c6948512596be!2sDammam%20Saudi%20Arabia!5e0!3m2!1sen!2sae!4v1710410000000!5m2!1sen!2sae" 
                     width="100%" 
                     height="100%" 
                     style={{border: 0}} 
                     allowFullScreen="" 
                     loading="lazy" 
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Main Office Map"
+                    title="HAMZ Location"
                  ></iframe>
               </div>
               
               <div className="space-y-4 text-sm font-light text-[#B0B0B0]">
-                 <p className="flex items-center gap-4"><Phone size={14} className="text-[#8A8A8A]"/> +966 011 4399099</p>
-                 <p className="flex items-center gap-4"><Phone size={14} className="text-[#8A8A8A]"/> +966 053 3633123</p>
-                 <p className="flex items-center gap-4"><Mail size={14} className="text-[#8A8A8A]"/> contact@hamzad.com</p>
-              </div>
-           </div>
-
-           <div className="border-t border-[#2F2F2F] pt-16">
-              <span className="text-[#8A8A8A] text-[10px] uppercase tracking-[0.2em] block mb-2">Branch</span>
-              <h3 className="text-2xl font-light text-[#F5F5F5] uppercase tracking-wide mb-6">King Salman Road</h3>
-              
-              <div className="h-[300px] w-full bg-[#1A1A1A] rounded-xl overflow-hidden border border-[#2F2F2F] filter grayscale transition-all duration-700 hover:grayscale-0 mb-6">
-                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14506.772591605342!2d46.5924667!3d24.8178944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQ5JzA0LjQiTiA0NsKwMzUnMzIuOSJF!5e0!3m2!1sen!2sae!4v1650000000000" 
-                    width="100%" 
-                    height="100%" 
-                    style={{border: 0}} 
-                    allowFullScreen="" 
-                    loading="lazy" 
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Branch Map"
-                 ></iframe>
-              </div>
-              
-              <div className="space-y-4 text-sm font-light text-[#B0B0B0]">
-                 <p className="flex items-center gap-4"><Phone size={14} className="text-[#8A8A8A]"/> +966 011 4399699</p>
-                 <p className="flex items-center gap-4"><Phone size={14} className="text-[#8A8A8A]"/> +966 050 0292428</p>
+                 <p className="flex items-start gap-4 leading-relaxed">
+                    <MapPin size={16} className="text-[#8A8A8A] shrink-0 mt-1"/> 
+                    <span>
+                       Muadh Bin Jabal, Al Amamrah Dis P.B 6913 <br />
+                       Dammam 32245, Kingdom Of Saudi Arabia
+                    </span>
+                 </p>
+                 <p className="flex items-center gap-4">
+                    <Phone size={16} className="text-[#8A8A8A] shrink-0"/> 
+                    +966 58 328 3813
+                 </p>
+                 <p className="flex items-center gap-4">
+                    <Mail size={16} className="text-[#8A8A8A] shrink-0"/> 
+                    sales@hamzksa.com
+                 </p>
               </div>
            </div>
         </div>

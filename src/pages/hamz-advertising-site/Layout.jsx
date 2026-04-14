@@ -26,10 +26,10 @@ export default function Layout() {
         {/* slim gold accent line at very top */}
         <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.45) 35%, rgba(212,175,55,0.45) 65%, transparent 100%)' }} />
 
-        <div className="container mx-auto px-6 flex items-center justify-between" style={{ height: '58px' }}>
+        <div className="container mx-auto px-6 flex items-center justify-between relative" style={{ height: '58px' }}>
 
-          {/* Left — back button */}
-          <div className="flex items-center" style={{ flex: '0 0 auto' }}>
+          {/* Left — back button & Logo */}
+          <div className="flex items-center gap-5" style={{ flex: '0 0 auto' }}>
             <Link
               to="/"
               title="Back to Hub"
@@ -40,10 +40,7 @@ export default function Layout() {
             >
               <ArrowLeft size={13} strokeWidth={2} />
             </Link>
-          </div>
 
-          {/* Centre — Logo */}
-          <div className="absolute left-1/2" style={{ transform: 'translateX(-50%)' }}>
             <Link to="/hamz-advertising" className="transition-opacity hover:opacity-75">
               <span style={{ fontSize: '14px', fontWeight: 300, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#F5F5F5', whiteSpace: 'nowrap' }}>
                 HAMZ&nbsp;<span style={{ fontWeight: 700, color: '#8A8A8A' }}>ADVERTISING</span>
@@ -51,7 +48,32 @@ export default function Layout() {
             </Link>
           </div>
 
-          {/* Right — Desktop nav */}
+          {/* Center — Desktop nav links (absolutely centered) */}
+          <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+            {navLinks.map(({ label, to }) => (
+              <Link
+                key={to}
+                to={to}
+                style={{
+                  padding: '6px 14px',
+                  fontSize: '11px',
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  color: isActive(to) ? '#F5F5F5' : '#8A8A8A',
+                  position: 'relative',
+                  transition: 'color 0.25s',
+                  textDecoration: 'none',
+                  borderBottom: isActive(to) ? '1px solid rgba(212,175,55,0.7)' : '1px solid transparent',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = '#F5F5F5'; }}
+                onMouseLeave={e => { e.currentTarget.style.color = isActive(to) ? '#F5F5F5' : '#8A8A8A'; }}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right — Contact CTA & Mobile hamburger */}
           <div className="flex items-center gap-1" style={{ flex: '0 0 auto' }}>
 
             {/* Mobile hamburger */}
@@ -62,58 +84,33 @@ export default function Layout() {
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
 
-            {/* Desktop links */}
-            <nav className="hidden md:flex items-center gap-1">
-              {navLinks.map(({ label, to }) => (
-                <Link
-                  key={to}
-                  to={to}
-                  style={{
-                    padding: '6px 14px',
-                    fontSize: '11px',
-                    letterSpacing: '0.16em',
-                    textTransform: 'uppercase',
-                    color: isActive(to) ? '#F5F5F5' : '#8A8A8A',
-                    position: 'relative',
-                    transition: 'color 0.25s',
-                    textDecoration: 'none',
-                    borderBottom: isActive(to) ? '1px solid rgba(212,175,55,0.7)' : '1px solid transparent',
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.color = '#F5F5F5'; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = isActive(to) ? '#F5F5F5' : '#8A8A8A'; }}
-                >
-                  {label}
-                </Link>
-              ))}
-
-              {/* Contact CTA */}
-              <Link
-                to="/hamz-advertising/contact"
-                style={{
-                  marginLeft: '10px',
-                  padding: '7px 18px',
-                  fontSize: '11px',
-                  letterSpacing: '0.16em',
-                  textTransform: 'uppercase',
-                  color: isActive('/hamz-advertising/contact') ? '#d4af37' : '#c0c0c0',
-                  border: `1px solid ${isActive('/hamz-advertising/contact') ? 'rgba(212,175,55,0.7)' : 'rgba(255,255,255,0.14)'}`,
-                  borderRadius: '3px',
-                  background: isActive('/hamz-advertising/contact') ? 'rgba(212,175,55,0.07)' : 'transparent',
-                  transition: 'all 0.25s',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(212,175,55,0.7)'; e.currentTarget.style.color='#d4af37'; e.currentTarget.style.background='rgba(212,175,55,0.07)'; }}
-                onMouseLeave={e => {
-                  const a = isActive('/hamz-advertising/contact');
-                  e.currentTarget.style.borderColor = a ? 'rgba(212,175,55,0.7)' : 'rgba(255,255,255,0.14)';
-                  e.currentTarget.style.color = a ? '#d4af37' : '#c0c0c0';
-                  e.currentTarget.style.background = a ? 'rgba(212,175,55,0.07)' : 'transparent';
-                }}
-              >
-                Contact
-              </Link>
-            </nav>
+            {/* Contact CTA (desktop only) */}
+            <Link
+              to="/hamz-advertising/contact"
+              className="hidden md:block"
+              style={{
+                padding: '7px 18px',
+                fontSize: '11px',
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+                color: isActive('/hamz-advertising/contact') ? '#d4af37' : '#c0c0c0',
+                border: `1px solid ${isActive('/hamz-advertising/contact') ? 'rgba(212,175,55,0.7)' : 'rgba(255,255,255,0.14)'}`,
+                borderRadius: '3px',
+                background: isActive('/hamz-advertising/contact') ? 'rgba(212,175,55,0.07)' : 'transparent',
+                transition: 'all 0.25s',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(212,175,55,0.7)'; e.currentTarget.style.color='#d4af37'; e.currentTarget.style.background='rgba(212,175,55,0.07)'; }}
+              onMouseLeave={e => {
+                const a = isActive('/hamz-advertising/contact');
+                e.currentTarget.style.borderColor = a ? 'rgba(212,175,55,0.7)' : 'rgba(255,255,255,0.14)';
+                e.currentTarget.style.color = a ? '#d4af37' : '#c0c0c0';
+                e.currentTarget.style.background = a ? 'rgba(212,175,55,0.07)' : 'transparent';
+              }}
+            >
+              Contact
+            </Link>
           </div>
         </div>
 
