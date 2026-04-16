@@ -110,7 +110,7 @@ const ScrollCard = forwardRef((props, ref) => {
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                animation: 'shimmer-title 6s linear infinite',
+                animation: 'shimmer-title 15s linear infinite',
               }}
             >
               Our Values
