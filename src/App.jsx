@@ -19,7 +19,7 @@ import SpotlightCard from './SpotlightCard';
 import VariableProximity from './VariableProximity';
 import TiltedCard from './TiltedCard';
 import Galaxy from './Galaxy';
-import PremiumGlowBackground from './PremiumGlowBackground';
+import ShaderBackground from './ShaderBackground';
 
 
 // --- UI Components ---
@@ -32,7 +32,7 @@ const HeroSection = () => {
         <div className="relative h-screen w-full flex flex-col justify-between items-center z-10 pointer-events-none pt-32 pb-12 overflow-hidden">
 
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <PremiumGlowBackground />
+                <ShaderBackground />
             </div>
 
             {/* Main Foreground Title Overlay over 3D Center */}

@@ -222,7 +222,7 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     padding: 2px;
-    animation: flow-border-spin-hamz 4s linear infinite;
+    animation: flow-border-spin-hamz 10s linear infinite;
     pointer-events: none;
     z-index: 10;
   }
@@ -234,14 +234,14 @@
     border-radius: inherit;
     background: conic-gradient(from var(--flow-angle-hamz), transparent 40%, rgba(255, 117, 73, 0.5), rgba(255, 117, 73, 1), transparent 80%);
     filter: blur(12px);
-    animation: flow-border-spin-hamz 4s linear infinite;
+    animation: flow-border-spin-hamz 10s linear infinite;
     z-index: -1;
     pointer-events: none;
   }
 
   .hamz-flowing-glow:hover::before,
   .hamz-flowing-glow:hover::after {
-    animation-duration: 1.2s;
+    animation-duration: 3s;
   }
 
   @keyframes flow-border-spin-hamz {
