@@ -56,10 +56,10 @@ void main(void) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv;
     float d=length(p);
-    col+=.00125/d*(cos(sin(i)*vec3(3,1,2))*vec3(0.05,0.6,0.25)+vec3(0.0,0.4,0.15));
+    col+=.00125/d*(cos(sin(i)*vec3(3,1,2))*vec3(0.04,0.18,0.14)+vec3(0.02,0.12,0.09));
     float b=noise(i+p+bg*1.731);
-    col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(0.05,0.55,0.2);
-    col=mix(col,vec3(bg*.02,bg*.18,bg*.07),d);
+    col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(0.03,0.15,0.11);
+    col=mix(col,vec3(bg*.035,bg*.07,bg*.055),d);
   }
   O=vec4(col,1);
 }`;

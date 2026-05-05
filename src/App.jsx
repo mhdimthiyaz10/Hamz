@@ -73,7 +73,7 @@ const HeroSection = () => {
 
             {/* Glassmorphism Cards */}
             <motion.div
-                className="w-full max-w-[850px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 z-20 pointer-events-auto pb-16 px-6 relative"
+                className="w-full max-w-[850px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 z-20 pointer-events-auto pb-24 mb-8 px-6 relative"
                 initial={{ opacity: 0, y: 80, filter: 'blur(15px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 2.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -103,16 +103,21 @@ const HeroSection = () => {
                         showTooltip={false}
                     >
                         <Link to="/hamz-trading" className="block w-full h-[220px] rounded-[24px] shadow-[0_30px_50px_rgba(0,0,0,0.6)] group transition-shadow duration-300 relative cursor-pointer">
-                            <SpotlightCard className="relative w-full h-full rounded-[24px] border border-white/5 bg-gradient-to-br from-[#020806]/95 to-[#061A16]/95 backdrop-blur-xl flex flex-col items-center justify-center overflow-hidden transition-colors duration-500" spotlightColor="rgba(255, 255, 255, 0.1)">
+                            <SpotlightCard className="relative w-full h-full rounded-[24px] border border-white/10 bg-gradient-to-br from-[#020806]/40 to-[#061A16]/40 backdrop-blur-[30px] flex flex-col items-center justify-center overflow-hidden transition-colors duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.03)]" spotlightColor="rgba(255, 255, 255, 0.1)">
+                                {/* Noise Texture for Water Vapour effect */}
+                                <div className="absolute inset-0 opacity-[0.25] pointer-events-none mix-blend-overlay rounded-[24px]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+                                
                                 {/* Very subtle glow in top left corner of the card */}
                                 <div className="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] pointer-events-none" />
 
-                                <h3 className="text-6xl md:text-7xl font-black text-white tracking-tighter mb-2 z-10 transition-transform duration-500 group-hover:-translate-y-2" style={{ fontFamily: "Impact, 'Arial Black', sans-serif", letterSpacing: "-0.02em" }}>
-                                    H<span style={{ clipPath: "polygon(50% 0%, 0% 100%, 20% 100%, 50% 30%, 80% 100%, 100% 100%)", display: "inline-block", padding: "0 2px" }}>A</span>MZ
-                                </h3>
-                                <p className="text-[8px] md:text-[9.5px] uppercase text-white tracking-[0.1em] font-semibold text-center mt-1 z-10 w-full px-4 transition-transform duration-500 group-hover:translate-y-1" style={{ fontFamily: "Arial, sans-serif" }}>
-                                    Hussain Habeeb Yousif Al Saihati Trading
-                                </p>
+                                <div className="flex flex-col items-center justify-center z-10 transition-transform duration-500 group-hover:-translate-y-2 w-full px-4">
+                                    <h3 className="text-7xl md:text-[84px] font-black text-white leading-none mb-1 flex items-center tracking-normal" style={{ fontFamily: "Impact, 'Arial Black', sans-serif" }}>
+                                        H<span style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 75% 100%, 50% 10%, 25% 100%, 0% 100%)", display: "inline-block", margin: "0 -2px" }}>A</span>MZ
+                                    </h3>
+                                    <p className="text-[10px] md:text-[11.5px] uppercase text-white font-bold text-center w-full" style={{ fontFamily: "'Arial Narrow', 'Oswald', 'Bebas Neue', sans-serif", letterSpacing: "0.04em", transform: "scaleY(1.3)", marginTop: "2px" }}>
+                                        Hussain Habeeb Yousif Al Saihati Trading
+                                    </p>
+                                </div>
                             </SpotlightCard>
                         </Link>
                     </TiltedCard>
@@ -142,7 +147,10 @@ const HeroSection = () => {
                         showTooltip={false}
                     >
                         <Link to="/hamz-advertising" className="block w-full h-[220px] rounded-[24px] shadow-[0_30px_50px_rgba(0,0,0,0.6)] group transition-shadow duration-300 relative cursor-pointer">
-                            <SpotlightCard className="relative w-full h-full rounded-[24px] border border-white/5 bg-gradient-to-br from-[#020806]/95 to-[#061A16]/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 overflow-hidden transition-colors duration-500" spotlightColor="rgba(255, 255, 255, 0.1)">
+                            <SpotlightCard className="relative w-full h-full rounded-[24px] border border-white/10 bg-gradient-to-br from-[#020806]/40 to-[#061A16]/40 backdrop-blur-[30px] flex flex-col items-center justify-center p-6 overflow-hidden transition-colors duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.03)]" spotlightColor="rgba(255, 255, 255, 0.1)">
+                                {/* Noise Texture for Water Vapour effect */}
+                                <div className="absolute inset-0 opacity-[0.25] pointer-events-none mix-blend-overlay rounded-[24px]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+
                                 {/* Very subtle glow in top left corner of the card */}
                                 <div className="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] pointer-events-none" />
 
