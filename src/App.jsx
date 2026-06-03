@@ -19,8 +19,10 @@ import SpotlightCard from './SpotlightCard';
 import VariableProximity from './VariableProximity';
 import TiltedCard from './TiltedCard';
 import Galaxy from './Galaxy';
-import ShaderBackground from './ShaderBackground';
-
+import Beams from './Beams';
+import newLogo from '../assets/file333.png.png';
+import advLogo from '../assets/file444.png.png';
+import titleLogo from '../assets/file666.png.png';
 
 // --- UI Components ---
 
@@ -32,7 +34,16 @@ const HeroSection = () => {
         <div className="relative h-screen w-full flex flex-col justify-between items-center z-10 pointer-events-none pt-32 pb-12 overflow-hidden">
 
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <ShaderBackground />
+                <Beams
+                    beamWidth={2}
+                    beamHeight={24}
+                    beamNumber={12}
+                    lightColor="#4ADE80"
+                    speed={2}
+                    noiseIntensity={0}
+                    scale={0.19}
+                    rotation={38}
+                />
             </div>
 
             {/* Main Foreground Title Overlay over 3D Center */}
@@ -43,30 +54,39 @@ const HeroSection = () => {
                         initial={{ opacity: 0, scale: 0.4, y: 40, filter: 'blur(20px)' }}
                         animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
                         transition={{ duration: 3.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex flex-col items-center justify-center"
                     >
-                        <h1
-                            className="text-2xl md:text-4xl lg:text-5xl text-white mb-3 drop-shadow-2xl cursor-default"
-                            dir="rtl"
-                            style={{
-                                fontFamily: "'Amiri', serif",
-                                lineHeight: "1.6",
-                                fontWeight: 400,
-                                fontStyle: "italic",
-                                textShadow: "0 4px 8px rgba(0,0,0,0.9)",
-                            }}
-                        >
-                            مؤسسة حسين حبيب بن يوسف السيهاتي.
-                        </h1>
-                        <h2 className="text-[10px] md:text-sm lg:text-base font-medium text-white tracking-[0.3em] uppercase drop-shadow-md cursor-default">
-                            <VariableProximity
-                                label="Hussein Habib Bin Yousef Al-Sihati Foundation"
-                                containerRef={containerRef}
-                                radius={150}
-                                falloff="gaussian"
-                                fromFontVariationSettings="'wght' 500, 'wdth' 100"
-                                toFontVariationSettings="'wght' 900, 'wdth' 150"
-                            />
-                        </h2>
+                        {true ? (
+                            <img src={titleLogo} alt="Foundation Title" className="h-16 md:h-24 lg:h-32 object-contain drop-shadow-2xl mb-8" />
+                        ) : (
+                            <>
+                                <h1
+                                    className="text-2xl md:text-4xl lg:text-5xl text-white mb-3 drop-shadow-2xl cursor-default"
+                                    dir="rtl"
+                                    style={{
+                                        fontFamily: "'Amiri', serif",
+                                        lineHeight: "1.6",
+                                        fontWeight: 400,
+                                        fontStyle: "italic",
+                                        textShadow: "0 4px 8px rgba(0,0,0,0.9)",
+                                    }}
+                                >
+                                    {/* TODO: Add your new Arabic title here between the quotes to replace the default */}
+                                    {"" || "مؤسسة حسين حبيب بن يوسف السيهاتي."}
+                                </h1>
+                                <h2 className="text-[10px] md:text-sm lg:text-base font-medium text-white tracking-[0.3em] uppercase drop-shadow-md cursor-default">
+                                    <VariableProximity
+                                        /* TODO: Add your new English title here between the quotes to replace the default */
+                                        label={"" || "Hussein Habib Bin Yousef Al-Sihati Foundation"}
+                                        containerRef={containerRef}
+                                        radius={150}
+                                        falloff="gaussian"
+                                        fromFontVariationSettings="'wght' 500, 'wdth' 100"
+                                        toFontVariationSettings="'wght' 900, 'wdth' 150"
+                                    />
+                                </h2>
+                            </>
+                        )}
                     </motion.div>
                 </div>
             </div>
@@ -111,12 +131,16 @@ const HeroSection = () => {
                                 <div className="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] pointer-events-none" />
 
                                 <div className="flex flex-col items-center justify-center z-10 transition-transform duration-500 group-hover:-translate-y-2 w-full px-4">
-                                    <h3 className="text-7xl md:text-[84px] font-black text-white leading-none mb-1 flex items-center tracking-normal" style={{ fontFamily: "Impact, 'Arial Black', sans-serif" }}>
-                                        H<span style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 75% 100%, 50% 10%, 25% 100%, 0% 100%)", display: "inline-block", margin: "0 -2px" }}>A</span>MZ
-                                    </h3>
-                                    <p className="text-[10px] md:text-[11.5px] uppercase text-white font-bold text-center w-full" style={{ fontFamily: "'Arial Narrow', 'Oswald', 'Bebas Neue', sans-serif", letterSpacing: "0.04em", transform: "scaleY(1.3)", marginTop: "2px" }}>
-                                        Hussain Habeeb Yousif Al Saihati Trading
-                                    </p>
+                                    {/* TODO: Add your new logo image path here. 
+                                        The text logo will remain until a valid src is provided. */}
+                                    {true /* replace 'false' with an image src like '"/assets/new-logo.png"' */ ? (
+                                        <img src={newLogo} alt="HAMZ Trading Logo" className="h-20 md:h-24 object-contain mb-4" />
+                                    ) : (
+                                        <h3 className="text-7xl md:text-[84px] font-black text-white leading-none mb-1 flex items-center tracking-normal" style={{ fontFamily: "Impact, 'Arial Black', sans-serif" }}>
+                                            H<span style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 75% 100%, 50% 10%, 25% 100%, 0% 100%)", display: "inline-block", margin: "0 -2px" }}>A</span>MZ
+                                        </h3>
+                                    )}
+
                                 </div>
                             </SpotlightCard>
                         </Link>
@@ -155,33 +179,34 @@ const HeroSection = () => {
                                 <div className="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] pointer-events-none" />
 
                                 {/* Stylized Arabic Logomark base shapes */}
-                                <div className="h-20 w-32 mb-4 relative z-10 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
-                                    <svg viewBox="0 0 100 80" className="w-full h-full fill-[#4ADE80] drop-shadow-md">
-                                        {/* Stylized Arabic Logomark base shapes */}
-                                        <rect x="25" y="60" width="55" height="4" />
-                                        <rect x="25" y="25" width="4" height="35" />
-                                        <rect x="35" y="30" width="4" height="30" />
-                                        <rect x="45" y="15" width="4" height="45" />
-                                        <rect x="55" y="35" width="4" height="25" />
-                                        <rect x="65" y="20" width="4" height="40" />
-                                        <rect x="76" y="28" width="4" height="32" />
-                                        {/* Cross bars */}
-                                        <rect x="25" y="45" width="10" height="4" />
-                                        <rect x="35" y="30" width="20" height="4" />
-                                        <rect x="55" y="45" width="14" height="4" />
-                                        <rect x="65" y="28" width="15" height="4" />
-                                        {/* Dots/Accents */}
-                                        <rect x="23" y="15" width="8" height="4" />
-                                        <rect x="33" y="20" width="8" height="4" />
-                                        <path d="M76 60 Q85 60 85 45 L81 45 Q81 56 76 56 Z" />
-                                    </svg>
-                                </div>
-                                <h4 className="text-[14px] md:text-[16px] font-bold text-white mb-1 tracking-wider z-10 transition-transform duration-500 group-hover:translate-y-1" dir="rtl" style={{ fontFamily: "'Traditional Arabic', 'Arial', sans-serif" }}>
-                                    هامز للدعاية والاعلان
-                                </h4>
-                                <p className="text-[9px] md:text-[10px] uppercase text-[#4ADE80] tracking-[0.2em] font-semibold z-10 transition-transform duration-500 group-hover:translate-y-1">
-                                    Hamz Advertising
-                                </p>
+                                {/* TODO: Add your new logo image path here. 
+                                    The SVG logo will remain until a valid src is provided. */}
+                                {true /* replace 'false' with an image src like '"/assets/new-adv-logo.png"' */ ? (
+                                    <img src={advLogo} alt="Hamz Advertising Logo" className="h-32 md:h-40 object-contain mb-2 relative z-10 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2" />
+                                ) : (
+                                    <div className="h-20 w-32 mb-4 relative z-10 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+                                        <svg viewBox="0 0 100 80" className="w-full h-full fill-[#4ADE80] drop-shadow-md">
+                                            {/* Stylized Arabic Logomark base shapes */}
+                                            <rect x="25" y="60" width="55" height="4" />
+                                            <rect x="25" y="25" width="4" height="35" />
+                                            <rect x="35" y="30" width="4" height="30" />
+                                            <rect x="45" y="15" width="4" height="45" />
+                                            <rect x="55" y="35" width="4" height="25" />
+                                            <rect x="65" y="20" width="4" height="40" />
+                                            <rect x="76" y="28" width="4" height="32" />
+                                            {/* Cross bars */}
+                                            <rect x="25" y="45" width="10" height="4" />
+                                            <rect x="35" y="30" width="20" height="4" />
+                                            <rect x="55" y="45" width="14" height="4" />
+                                            <rect x="65" y="28" width="15" height="4" />
+                                            {/* Dots/Accents */}
+                                            <rect x="23" y="15" width="8" height="4" />
+                                            <rect x="33" y="20" width="8" height="4" />
+                                            <path d="M76 60 Q85 60 85 45 L81 45 Q81 56 76 56 Z" />
+                                        </svg>
+                                    </div>
+                                )}
+
                             </SpotlightCard>
                         </Link>
                     </TiltedCard>
