@@ -20,6 +20,7 @@ import VariableProximity from './VariableProximity';
 import TiltedCard from './TiltedCard';
 import Galaxy from './Galaxy';
 import Beams from './Beams';
+import PrismaticBurst from './PrismaticBurst';
 import newLogo from '../assets/file333.png.png';
 import advLogo from '../assets/file444.png.png';
 import titleLogo from '../assets/file666.png.png';
@@ -34,15 +35,17 @@ const HeroSection = () => {
         <div className="relative h-screen w-full flex flex-col justify-between items-center z-10 pointer-events-none pt-32 pb-12 overflow-hidden">
 
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <Beams
-                    beamWidth={2}
-                    beamHeight={24}
-                    beamNumber={12}
-                    lightColor="#4ADE80"
-                    speed={2}
-                    noiseIntensity={0}
-                    scale={0.19}
-                    rotation={38}
+                <PrismaticBurst
+                    animationType="rotate3d"
+                    intensity={5}
+                    speed={0.25}
+                    distort={2.9}
+                    paused={false}
+                    offset={{ x: 0, y: 0 }}
+                    hoverDampness={0.25}
+                    rayCount={24}
+                    mixBlendMode="lighten"
+                    colors={['#041914', '#082815', '#05120E']}
                 />
             </div>
 
@@ -123,7 +126,7 @@ const HeroSection = () => {
                         showTooltip={false}
                     >
                         <Link to="/hamz-trading" className="block w-full h-[220px] rounded-[24px] shadow-[0_30px_50px_rgba(0,0,0,0.6)] group transition-shadow duration-300 relative cursor-pointer">
-                            <SpotlightCard className="relative w-full h-full rounded-[24px] border border-white/10 bg-gradient-to-br from-[#020806]/40 to-[#061A16]/40 backdrop-blur-[30px] flex flex-col items-center justify-center overflow-hidden transition-colors duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.03)]" spotlightColor="rgba(255, 255, 255, 0.1)">
+                            <SpotlightCard className="relative w-full h-full rounded-[24px] border border-white/10 bg-[#05120E]/80 backdrop-blur-[30px] flex flex-col items-center justify-center overflow-hidden transition-colors duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.03)]" spotlightColor="rgba(255, 255, 255, 0.1)">
                                 {/* Noise Texture for Water Vapour effect */}
                                 <div className="absolute inset-0 opacity-[0.25] pointer-events-none mix-blend-overlay rounded-[24px]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
                                 
@@ -171,7 +174,7 @@ const HeroSection = () => {
                         showTooltip={false}
                     >
                         <Link to="/hamz-advertising" className="block w-full h-[220px] rounded-[24px] shadow-[0_30px_50px_rgba(0,0,0,0.6)] group transition-shadow duration-300 relative cursor-pointer">
-                            <SpotlightCard className="relative w-full h-full rounded-[24px] border border-white/10 bg-gradient-to-br from-[#020806]/40 to-[#061A16]/40 backdrop-blur-[30px] flex flex-col items-center justify-center p-6 overflow-hidden transition-colors duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.03)]" spotlightColor="rgba(255, 255, 255, 0.1)">
+                            <SpotlightCard className="relative w-full h-full rounded-[24px] border border-white/10 bg-[#05120E]/80 backdrop-blur-[30px] flex flex-col items-center justify-center p-6 overflow-hidden transition-colors duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.03)]" spotlightColor="rgba(255, 255, 255, 0.1)">
                                 {/* Noise Texture for Water Vapour effect */}
                                 <div className="absolute inset-0 opacity-[0.25] pointer-events-none mix-blend-overlay rounded-[24px]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
 
@@ -313,7 +316,7 @@ const ContactSection = () => {
 export default function App() {
 
     return (
-        <div className="w-full min-h-screen bg-transparent relative selection:bg-accent selection:text-white">
+        <div className="w-full min-h-screen bg-[#05120E] relative selection:bg-accent selection:text-white">
 
             {/* Routes for Different Pages */}
             <Routes>

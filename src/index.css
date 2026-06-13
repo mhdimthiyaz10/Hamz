@@ -9,7 +9,7 @@
 
   body {
     @apply text-white overflow-x-hidden;
-    background-color: #020806;
+    background-color: #05120E;
     color: white;
   }
 
@@ -95,7 +95,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #020a08;
+    background: #05120E;
   }
 
   ::-webkit-scrollbar-thumb {
